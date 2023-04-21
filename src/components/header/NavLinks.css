@@ -1,0 +1,15 @@
+.c-navlinks {
+  background-color: var(--primaryColor);
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 30px;
+  height: 45px;
+  width: 100vw;
+}
+
+.c-navlinks p {
+  margin: 0;
+  width: 20%;
+  text-align: center;
+}
