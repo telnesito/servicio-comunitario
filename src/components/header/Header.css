@@ -1,0 +1,82 @@
+:root {
+  --backgroundColor: #e7e6e6;
+  --primaryColor: #660033;
+  --onActionColor: #c2a436;
+  --boxShadowColor: #36353556;
+}
+
+.c-header {
+  width: 100vw;
+  height: 80px;
+}
+
+.c-h-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--backgroundColor);
+}
+
+.c-h-principalLink {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 50%;
+  color: var(--primaryColor);
+  font-weight: 600;
+}
+
+.c-h-principalLink p {
+  text-align: center;
+  width: 25%;
+}
+
+.c-h-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 30%;
+  gap: 15px;
+}
+
+.c-h-logo p {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 750;
+  color: var(--primaryColor);
+  height: 25px;
+}
+
+.c-h-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 10px;
+  width: 20%;
+}
+
+.c-h-button button {
+  width: 130px;
+  height: 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 2px 5px 5px var(--boxShadowColor);
+  font-size: 0.8rem;
+  border: 0;
+}
+
+.btn-login {
+  background-color: var(--onActionColor);
+  font-weight: 550;
+}
+.btn-contact {
+  background-color: white;
+  color: var(--primaryColor);
+  font-weight: 550;
+}
