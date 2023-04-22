@@ -1,0 +1,36 @@
+.c-comunicaciones-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  height: 250px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.593);
+  color: var(--primaryColor);
+}
+
+.c-c-title {
+  font-weight: 700;
+}
+
+.c-comunicaciones-card p {
+  margin: 4px;
+}
+
+.c-comunicaciones-divider {
+  width: 100%;
+  height: 4px;
+  background-color: var(--onActionColor);
+}
+
+.c-c-descripcion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,28 @@
+.c-footer-principal {
+  height: 350px;
+  width: 100%;
+  background-color: var(--primaryColor);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.c-footer-principal div {
+  width: 25%;
+}
+
+.f-colegio,
+.f-contacto,
+.f-redes,
+.f-importante {
+  height: 80%;
+}
+
+.f-colegio {
+  text-align: center;
+}
+
+.c-footer-principal h3 {
+  font-size: 1.5rem;
+}

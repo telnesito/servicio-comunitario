@@ -7,7 +7,7 @@ const Hero = () => {
 
   return (
     <div className='c-hero-principal'>
-      <Carousel className='c-hero-info'>
+      <Carousel showThumbs={false} autoPlay infiniteLoop transitionTime={1000} className='c-hero-info'>
 
         <Noticias title={'PREINSCRIPCCIONES 2023-24'} prevText={'¡Bienvenidos al Colegio Metropolitano! Pronto abriremos nuestras inscripciones para el próximo año escolar. Ofrecemos una educación de calidad a precios accesibles, con programas y actividades extracurriculares que complementan el aprendizaje en el aula. Nuestro personal altamente calificado y comprometido se asegura de que cada estudiante tenga un ambiente de aprendizaje seguro y enriquecedor. Mantente atento a nuestra página web para más información sobre cómo unirte a nuestra comunidad educativa'} buttonText={'Saber mas!'} />
 

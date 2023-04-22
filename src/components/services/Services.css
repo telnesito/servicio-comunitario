@@ -56,7 +56,7 @@
 .c-service-primaria,
 .c-service-tecnico {
   display: flex;
-  border-radius: 10px;
+  border-radius: 15px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

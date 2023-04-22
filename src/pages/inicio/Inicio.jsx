@@ -1,3 +1,5 @@
+import Comunicaciones from "../../components/events/Comunicaciones"
+import Foother from "../../components/foother/Foother"
 import Header from "../../components/header/Header"
 import NavLinks from "../../components/header/NavLinks"
 import Hero from "../../components/hero/Hero"
@@ -12,8 +14,8 @@ const Inicio = () => {
       <Hero />
       <Conocenos />
       <Services />
-
-
+      <Comunicaciones />
+      <Foother />
     </div>
   )
 }

@@ -1,0 +1,50 @@
+.c-comunicaciones-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 750px;
+  width: 100vw;
+  background-color: var(--backgroundColor);
+}
+
+.c-comunicaciones-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  color: var(--primaryColor);
+  font-size: 1.5rem;
+}
+
+.c-comunicaciones-title h2 {
+  font-weight: 700;
+}
+
+.c-comunicaciones-title div {
+  width: 50%;
+  height: 8px;
+  background-color: var(--onActionColor);
+}
+
+.c-comunicaciones-cards {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100vw;
+  height: 100%;
+}
+
+.c-comunicaciones-principal button {
+  width: 78%;
+  border: 0;
+  border-radius: 5px;
+  height: 50px;
+  background-color: var(--onActionColor);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.414);
+}
