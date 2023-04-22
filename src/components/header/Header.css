@@ -6,8 +6,12 @@
 }
 
 .c-header {
+  position: sticky;
+  top: 0;
   width: 100vw;
-  height: 80px;
+  height: 90px;
+  z-index: 9999;
+  box-shadow: 1px 5px 20px rgba(0, 0, 0, 0.197);
 }
 
 .c-h-link {
