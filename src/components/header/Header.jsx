@@ -11,7 +11,6 @@ const Header = () => {
           <p onClick={() => navigate('/')}>INICIO</p>
           <p onClick={() => navigate('/cuerpo-directivo')}>ORGANIGRAMA</p>
           <p onClick={() => navigate('/galeria')}>GALERIA</p>
-          <p>CONOCENOS</p>
 
         </span>
 

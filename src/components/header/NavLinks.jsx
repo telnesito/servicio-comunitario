@@ -26,12 +26,11 @@ const NavLinks = () => {
         id: getUniqueId(),
         to: '#eventos'
       },
-
       {
-        seccion: 'Google Maps',
+        seccion: 'Contactanos',
         id: getUniqueId(),
-        to: '#googlemaps'
-      }
+        to: '#foother'
+      },
     ]
 
 

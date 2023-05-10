@@ -36,6 +36,7 @@
 .texto button {
   width: 300px;
   color: white;
+  height: 50px;
   background-color: #c2a436;
   border: none;
   border-radius: 5px;

@@ -24,7 +24,7 @@ const Formulario = () => {
         </div>
 
         <div className="c-btn-login">
-          <button className="ingresar-btn" type="submit">Ingresar</button>
+          <button className="ingresar-btn" type="button" onClick={() => navigate('/administracion/main/noticias')}>Ingresar</button>
           <button className="volver-btn" onClick={() => navigate('/')}>Volver</button>
         </div>
       </form>

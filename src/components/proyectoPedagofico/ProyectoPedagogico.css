@@ -1,5 +1,6 @@
 .top {
   display: flex;
+  font-size: 20px;
   flex-direction: column;
 }
 
@@ -36,13 +37,9 @@ h2 {
   margin-top: 20px;
 }
 
-.boton {
-  display: flex;
-  width: 100%;
-}
-
-button {
+.btn-proyecto {
   width: 200px;
+  height: 50px;
   color: white;
   background-color: #c2a436;
   border: none;

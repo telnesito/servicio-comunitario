@@ -25,7 +25,7 @@ const ProyectoPedagogico = () => {
             <li>Más de 27 promociones de bachilleres, todos ellos ubicados en estudios superiores o ya en el campo de trabajo.</li>
           </ul>
 
-          <button onClick={() => navigate('/historia')}>HISTORIA</button>
+          <button className='btn-proyecto' onClick={() => navigate('/historia')}>HISTORIA</button>
         </div>
       </main>
 

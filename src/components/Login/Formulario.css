@@ -121,13 +121,13 @@
   width: 85%;
   line-height: 1.7;
 }
-div h2 {
+.title-login {
   margin: 0;
   font-size: 40px;
   font-weight: bold;
 }
 
-div button {
+.btn-info-login {
   background-color: var(--onActionColor);
   border: 0;
   border-radius: 5px;

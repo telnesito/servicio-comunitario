@@ -3,7 +3,7 @@ import { IgButton } from './IgButton'
 
 const Foother = () => {
   return (
-    <footer className='c-footer-principal'>
+    <footer id='foother' className='c-footer-principal'>
 
       <div className='f-colegio'>
         <h3>Metropolitano</h3>
