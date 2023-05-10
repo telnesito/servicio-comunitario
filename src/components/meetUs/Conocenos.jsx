@@ -1,7 +1,9 @@
 import './Conocenos.css'
 import { getUniqueId } from 'unique-id-generator-javascript'
-
+import { useNavigate } from 'react-router'
 const Conocenos = () => {
+
+  const navigate = useNavigate()
 
   const SERVICES =
     [
@@ -9,43 +11,48 @@ const Conocenos = () => {
         id: getUniqueId(),
         image: '/src/assets/images/proyectoPedagogico.png',
         title: 'PROYECTO PEDAGOGICO',
-        button: 'Ver mas'
+        button: 'Ver mas',
+        to: '/proyecto-pedagogico/'
       },
       {
         id: getUniqueId(),
         image: '/src/assets/images/cuerpoDirectivo.png',
         title: 'CUERPO DIRECTIVO',
-        button: 'Ver mas'
+        button: 'Ver mas',
+        to: '/cuerpo-directivo/'
+
       },
       {
         id: getUniqueId(),
         image: '/src/assets/images/history.png',
         title: 'HISTORIA',
-        button: 'Ver mas'
+        button: 'Ver mas',
+        to: '/historia/'
       },
       {
         id: getUniqueId(),
         image: '/src/assets/images/Instalaciones.png',
         title: 'INSTALACIONES',
-        button: 'Ver mas'
+        button: 'Ver mas',
+        to: '/instalaciones/'
       }
     ]
 
 
   return (
-    <div className='c-conocenos-principal'>
+    <div id='conocenos' className='c-conocenos-principal'>
       <span className='c-conocenos-info'>
         <h1>U. E Colegio Metropolitano</h1>
         <p>El Colegio Metropolitano se creó en el mes de Septiembre del año 1988 y actualmente cuenta con  más de 27 promociones de bachilleres, todos ellos ubicados en estudios superiores o ya en el campo de trabajo.</p>
       </span>
 
       <div className='c-conocenos-services'>
-        {SERVICES.map(({ id, title, image, button }) => {
+        {SERVICES.map(({ id, title, image, button, to }) => {
           return (
             <div key={id}>
               <img src={image} />
               <p>{title}</p>
-              <button>{button}</button>
+              <button onClick={() => navigate(to)}>{button}</button>
             </div>
           );
         })}

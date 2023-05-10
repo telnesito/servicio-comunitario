@@ -1,0 +1,72 @@
+.top {
+  display: flex;
+  flex-direction: column;
+}
+
+.franja-amarilla-afuera {
+  display: flex;
+  justify-content: center;
+}
+
+.franja-amarilla {
+  height: 10px;
+  width: 80vw;
+  background-color: #c2a436;
+  margin-top: 10px;
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  width: 80%;
+}
+
+.lista {
+  max-width: 1300px;
+  text-align: left;
+}
+h2 {
+  margin-top: 0;
+}
+
+#mover {
+  position: relative;
+  left: -198px;
+  margin-top: 20px;
+}
+
+.boton {
+  display: flex;
+  width: 100%;
+}
+
+button {
+  width: 200px;
+  color: white;
+  background-color: #c2a436;
+  border: none;
+  border-radius: 5px;
+}
+
+.c-principal-proyecto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+  padding-bottom: 20px;
+  width: 100vw;
+  background-color: var(--backgroundColor);
+}
+
+.c-principal-proyecto h2 {
+  color: var(--primaryColor);
+}
+
+.c-principal-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

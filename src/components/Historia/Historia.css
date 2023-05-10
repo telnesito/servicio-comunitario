@@ -1,0 +1,42 @@
+.c-principal-proyecto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+  padding-bottom: 20px;
+  width: 100vw;
+  background-color: var(--backgroundColor);
+}
+
+.c-principal-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+}
+
+.franja-amarilla-afuera {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.texto {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+}
+
+.texto button {
+  width: 300px;
+  color: white;
+  background-color: #c2a436;
+  border: none;
+  border-radius: 5px;
+}

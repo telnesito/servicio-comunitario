@@ -57,7 +57,7 @@ const Comunicaciones = () => {
   ]
 
   return (
-    <div className='c-comunicaciones-principal'>
+    <div id='eventos' className='c-comunicaciones-principal'>
       <span className='c-comunicaciones-title'>
         <div />
         <h3>COMUNICACIONES 2023-24</h3>

@@ -6,29 +6,31 @@ const NavLinks = () => {
   const LINK_INICIO =
     [
       {
+        seccion: 'Noticias importantes',
+        id: getUniqueId(),
+        to: '#comunicaciones'
+      },
+      {
         seccion: 'Conocenos',
-        id: getUniqueId()
+        id: getUniqueId(),
+        to: '#conocenos'
       },
 
       {
-        seccion: 'Comunicaciones',
-        id: getUniqueId()
-      },
-      {
         seccion: 'Servicios',
-        id: getUniqueId()
+        id: getUniqueId(),
+        to: '#servicios'
       },
       {
         seccion: 'Eventos',
-        id: getUniqueId()
+        id: getUniqueId(),
+        to: '#eventos'
       },
-      {
-        seccion: 'Novedades',
-        id: getUniqueId()
-      },
+
       {
         seccion: 'Google Maps',
-        id: getUniqueId()
+        id: getUniqueId(),
+        to: '#googlemaps'
       }
     ]
 
@@ -36,7 +38,7 @@ const NavLinks = () => {
   return (
     <>
       <nav className='c-navlinks' >
-        {LINK_INICIO.map(({ id, seccion }) => <p key={id}> {seccion}</p>)}
+        {LINK_INICIO.map(({ id, seccion, to }) => <a className='linknav' href={to} key={id}> {seccion}</a>)}
       </nav>
     </>
   )

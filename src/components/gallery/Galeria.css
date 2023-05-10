@@ -1,0 +1,26 @@
+.c-a {
+  height: 700px;
+  background-color: var(--backgroundColor);
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.prob-a {
+  width: 90%;
+  height: 100%;
+}
+.c-a div {
+  border-radius: 15px;
+}
+
+.c-a h2 {
+  width: 90%;
+  color: var(--primaryColor);
+  padding: 0px;
+  border-bottom: 10px solid var(--onActionColor);
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

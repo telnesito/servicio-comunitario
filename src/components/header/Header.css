@@ -6,7 +6,7 @@
 }
 
 .c-header {
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   width: 100vw;
   height: 90px;
@@ -31,6 +31,10 @@
   width: 50%;
   color: var(--primaryColor);
   font-weight: 600;
+}
+
+.c-h-principalLink p {
+  cursor: pointer;
 }
 
 .c-h-principalLink p {
@@ -83,4 +87,8 @@
   background-color: white;
   color: var(--primaryColor);
   font-weight: 550;
+}
+
+.btn-login:hover {
+  background-color: #9a7b0c;
 }

@@ -1,0 +1,136 @@
+/* form */
+.c-formulario-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  background-color: var(--backgroundColor);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.c-logo-colegio {
+  display: flex;
+  height: 120px;
+  width: 90%;
+  align-items: center;
+  justify-content: left;
+}
+.logo-titulo {
+  font-weight: 700;
+  width: 250px;
+  font-size: 25px;
+  color: var(--primaryColor);
+}
+
+.c-form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.txt-abajo {
+  margin-top: 0px;
+  color: var(--primaryColor);
+  font-weight: 500;
+}
+
+.c-form-login input {
+  margin-left: 10px;
+  width: 100%;
+  height: 90%;
+  outline: 0;
+  border: 0;
+  color: black;
+  background-color: whitesmoke;
+
+  border-radius: 5px;
+}
+
+.icon-login {
+  color: var(--primaryColor);
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.c-input {
+  display: flex;
+  align-items: center;
+
+  border-radius: 5px;
+  background-color: whitesmoke;
+  width: 80%;
+
+  height: 50px;
+  border: 1px solid var(--primaryColor);
+}
+.c-btn-login {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ingresar-btn {
+  width: 80%;
+  height: 45px;
+  border-radius: 5px;
+  border: 0;
+  border: 1px solid var(--primaryColor);
+  background-color: var(--primaryColor);
+  font-weight: 700;
+}
+
+.volver-btn {
+  width: 80%;
+
+  height: 45px;
+  border-radius: 5px;
+  border: 0;
+  border: 1px solid var(--primaryColor);
+  background-color: var(--backgroundColor);
+  color: var(--primaryColor);
+  font-weight: 700;
+}
+
+/* info login */
+
+.c-infologin-principal {
+  align-items: left;
+  width: 70%;
+  background-image: linear-gradient(#660033bb, #66003398),
+    url(/src/assets/images/bg-login.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.c-infologin-principal div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  line-height: 1.7;
+}
+div h2 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+div button {
+  background-color: var(--onActionColor);
+  border: 0;
+  border-radius: 5px;
+  width: 220px;
+  height: 50px;
+}
