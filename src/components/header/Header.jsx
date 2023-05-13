@@ -24,7 +24,6 @@ const Header = () => {
 
         <span className="c-h-button">
           <button onClick={() => navigate('/administracion')} className='btn-login'>Iniciar sesion</button>
-          <button className='btn-contact'>Contactanos</button>
         </span>
 
       </nav>

@@ -1,17 +1,22 @@
-
 import './Services.css'
+import { useEffect } from 'react'
+import Aos from 'aos'
+import "aos/dist/aos.css"
 const Services = () => {
-
+  useEffect(() => {
+    Aos.init({ duration: 1000 })
+  }, [])
   return (
     <div id='servicios' className='c-service-principal'>
-      <span className='c-service-title'>
+      <span data-aos="fade-right" className='c-service-title'>
         <h3>SERVICIOS</h3>
         <div />
       </span>
 
       <p className='service-frase'>Siempre con nuestro lema: <b>Aprendiendo con Alegria, Disciplina y Eficiencia</b></p>
 
-      <div className='c-service-all'>
+      <div data-aos="fade-up"
+        data-aos-anchor-placement="center-bottom" className='c-service-all'>
 
         <div className='c-serivice-one'>
 

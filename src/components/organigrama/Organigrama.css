@@ -1,7 +1,6 @@
 .c-organigrama-principal {
   display: flex;
   align-items: center;
-  justify-content: center;
   height: 3500px;
   padding-bottom: 25px;
   flex-direction: column;

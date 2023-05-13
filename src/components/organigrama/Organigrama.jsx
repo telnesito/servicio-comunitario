@@ -1,18 +1,18 @@
 import './Organigrama.css'
+import { useEffect } from 'react'
+import Aos from 'aos'
+import "aos/dist/aos.css"
 const Organigrama = () => {
+  useEffect(() => {
+    Aos.init({ duration: 1000 })
+  }, [])
   return (
     <div className="c-organigrama-principal">
 
-      <div className="top">
-        <h2 className="subtitulo">NUESTRO EQUIPO</h2>
-        <div className="franja-amarilla-afuera">
-          <div className="franja-amarilla"></div>
-        </div>
-      </div>
 
       {/* <!--CUERPO DIRECTIVO--> */}
       <div className='c-all'>
-        <article className="cuerpo-directivo">
+        <article data-aos="fade-up" className="cuerpo-directivo">
 
           <h2 className="cuerpo">CUERPO DIRECTIVO</h2>
           {/* <!--LADO IZQUIERDO--> */}
@@ -90,9 +90,10 @@ const Organigrama = () => {
 
         <article className="cuerpo-docentes">
           {/* <!--PREESCOLAR--> */}
-          <h2 className="cuerpo">PREESCOLAR</h2>
+          <h2 data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom" className="cuerpo">PREESCOLAR</h2>
           {/* <!--IZQUIERDA--> */}
-          <div className="izquierda">
+          <div data-aos="fade-up" className="izquierda">
             <div className="presidente">
               <div className="letras">
                 <h4>Preescolar Nivel I</h4>
@@ -109,7 +110,7 @@ const Organigrama = () => {
             </div>
           </div>
           {/* <!--DERECHA--> */}
-          <div className="derecha">
+          <div data-aos="fade-up" className="derecha">
             <div className="vicepresidente">
               <img src="/img/Yanetzy-Ortiz-Preescolar-nivel-I.webp" alt="Foto Lcda Yanetzy Ortiz" />
               <div className="letras-der">
@@ -119,9 +120,10 @@ const Organigrama = () => {
             </div>
           </div>
           {/* <!--PRIMARIA--> */}
-          <h2 className="cuerpo">PRIMARIA</h2>
+          <h2 data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom" className="cuerpo">PRIMARIA</h2>
           {/* <!--IZQUIERDA--> */}
-          <div className="izquierda">
+          <div data-aos="fade-up" className="izquierda">
             <div className="presidente">
               <div className="letras">
                 <h4>1er. Grado</h4>
@@ -167,7 +169,7 @@ const Organigrama = () => {
           </div>
 
           {/* <!--DERECHA--> */}
-          <div className="derecha">
+          <div data-aos="fade-up" className="derecha">
             <div className="vicepresidente">
               <img src="/img/2do.-Grado-A-Lcda.-Silenia-Villarroel.webp" alt="Lcda. Silenia Villarroel" />
               <div className="letras-der">
@@ -212,9 +214,10 @@ const Organigrama = () => {
             </div>
           </div>
           {/* <!--SECUNDARIA--> */}
-          <h2 className="cuerpo">SECUNDARIA</h2>
+          <h2 data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom" className="cuerpo">SECUNDARIA</h2>
           {/* <!--LADO IZQUIERDO--> */}
-          <div className="izquierda">
+          <div data-aos="fade-up" className="izquierda">
             <div className="presidente">
               <div className="letras">
                 <h4>Inglés 4to. y 5to. Año</h4>
@@ -273,7 +276,7 @@ const Organigrama = () => {
             </div>
           </div>
           {/* <!--LADO DERECHO--> */}
-          <div className="derecha">
+          <div data-aos="fade-up" className="derecha">
             <div className="vicepresidente">
               <img src="/img/Matemática-4to.-y-5to.-Año-Lcda.Ing_.María-Barberi.webp" alt="Lcda./Ing. Maria Gabriela Barberi" />
               <div className="letras-der">
@@ -327,9 +330,10 @@ const Organigrama = () => {
           {/* <!--PERSONAL DE SERVICIO--> */}
 
           {/* <!--PERSONAL DE SEGURIDAD Y MANTENIMIENTO--> */}
-          <h2 className="cuerpo">SEGURIDAD Y MANTENIMIENTO</h2>
+          <h2 data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom" className="cuerpo">SEGURIDAD Y MANTENIMIENTO</h2>
           {/* <!--LADO IZQUIERDO--> */}
-          <div className="izquierda">
+          <div data-aos="fade-up" className="izquierda">
             <div className="presidente">
               <div className="letras">
                 <h4>Mantenimiento</h4>
@@ -339,9 +343,10 @@ const Organigrama = () => {
             </div>
           </div>
           {/* <!--PERSONAL DE LIMPIEZA--> */}
-          <h2 className="cuerpo">LIMPIEZA</h2>
+          <h2 data-aos="fade-up"
+            data-aos-anchor-placement="bottom-bottom" className="cuerpo">LIMPIEZA</h2>
           {/* <!---LADO IZQUIERDA--> */}
-          <div className="izquierda">
+          <div data-aos="fade-up" className="izquierda">
             <div className="presidente">
               <div className="letras">
                 <h4>Limpieza</h4>
@@ -358,7 +363,7 @@ const Organigrama = () => {
             </div>
           </div>
           {/* <!--LADO DERECHA--> */}
-          <div className="derecha">
+          <div data-aos="fade-up" className="derecha">
             <div className="vicepresidente">
               <img src="/img/foto-Colegio-Metro8.webp" alt="Nervis Limpieza" />
               <div className="letras-der">

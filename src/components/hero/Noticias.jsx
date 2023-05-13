@@ -1,6 +1,8 @@
 import './Hero.css'
+import { useNavigate } from 'react-router'
 
-const Noticias = ({ title, prevText, buttonText }) => {
+const Noticias = ({ title, prevText, buttonText, to }) => {
+  const navigate = useNavigate()
   return (
     <div className='noticias'>
       <span className='hero-info-title'>
@@ -12,7 +14,7 @@ const Noticias = ({ title, prevText, buttonText }) => {
         <p>{prevText}</p>
       </span>
 
-      <button>{buttonText}</button>
+      <button onClick={() => navigate(to)}>{buttonText}</button>
 
 
     </div>
