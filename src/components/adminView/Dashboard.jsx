@@ -7,7 +7,7 @@ import { LoginContext } from "../../hooks/ContextLoginProvider";
 import { useContext } from "react";
 const Nav = () => {
   const navigate = useNavigate()
-  const { uid, setUid } = useContext(LoginContext)
+  
 
   const MENU_EDITOR = [
 
@@ -36,7 +36,7 @@ const Nav = () => {
   const handleLogOut = async () => {
     try {
       await logOut()
-      setUid(false)
+      
       navigate('/administracion')
 
     } catch (error) {
