@@ -3,11 +3,9 @@ import { MdNewspaper, MdEvent, MdGroups, MdLogin } from "react-icons/md";
 import { getUniqueId } from 'unique-id-generator-javascript'
 import { useNavigate } from "react-router";
 import { logOut } from "../Login/auth";
-import { LoginContext } from "../../hooks/ContextLoginProvider";
-import { useContext } from "react";
 const Nav = () => {
   const navigate = useNavigate()
-  
+
 
   const MENU_EDITOR = [
 
@@ -36,7 +34,7 @@ const Nav = () => {
   const handleLogOut = async () => {
     try {
       await logOut()
-      
+
       navigate('/administracion')
 
     } catch (error) {
