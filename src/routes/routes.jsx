@@ -12,6 +12,8 @@ import Organigrama from "../components/adminView/Organigrama";
 import Noticia_1 from "../components/Noticias/Noticia_1";
 import { noticia_1, noticia_2, noticia_3 } from "../components/Noticias/Noticia";
 import { EVENTS } from "../components/events/events";
+import { ProtectedLogin } from "./protectedRoutes";
+import { ContextLoginProvider } from "../hooks/ContextLoginProvider";
 
 export const Router = createBrowserRouter([
 
@@ -21,11 +23,14 @@ export const Router = createBrowserRouter([
   },
   {
     path: '/administracion',
-    element: <Login />,
+    element: <Login />
+    ,
   },
   {
     path: '/administracion/main',
-    element: <AdminPage />,
+    element: <AdminPage />
+
+    ,
     children: [
       {
         path: 'noticias',
