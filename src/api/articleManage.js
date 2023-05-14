@@ -1,6 +1,7 @@
 import {
 	collection,
 	doc,
+	getDoc,
 	onSnapshot,
 	setDoc,
 	updateDoc,
@@ -40,4 +41,20 @@ export const getArticles = (callback, articleType) => {
 		console.log(articles);
 		callback(articles);
 	});
+};
+
+export const getArticleById = async (articleId, articleType) => {
+	try {
+		const articleRef = doc(db, articleType, articleId);
+		const articleDoc = await getDoc(articleRef);
+
+		if (!articleDoc.exists()) {
+			return null;
+		}
+
+		const article = { ...articleDoc.data(), articleId };
+		return article;
+	} catch (error) {
+		return null;
+	}
 };

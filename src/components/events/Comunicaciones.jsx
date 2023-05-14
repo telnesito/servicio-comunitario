@@ -33,6 +33,7 @@ const Comunicaciones = () => {
 					{eventos.map(({ id, title, img, date }) => (
 						<CardComunicaciones
 							key={id}
+							id={id}
 							title={title}
 							img={img}
 							date={date}
