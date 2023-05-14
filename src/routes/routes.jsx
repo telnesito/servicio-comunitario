@@ -15,6 +15,8 @@ import {
 	noticia_2,
 	noticia_3,
 } from "../components/Noticias/Noticia";
+import { ProtectedLogin } from "./protectedRoutes";
+import { ContextLoginProvider } from "../hooks/ContextLoginProvider";
 
 export const Router = createBrowserRouter([
 	{
@@ -32,6 +34,7 @@ export const Router = createBrowserRouter([
 	{
 		path: "/administracion/main",
 		element: <AdminPage />,
+
 		children: [
 			{
 				path: "noticias",
