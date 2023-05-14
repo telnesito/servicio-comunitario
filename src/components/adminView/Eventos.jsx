@@ -4,11 +4,33 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { toolbarOptions } from "../../utils/functions/toolbarOptions";
 import EventosModal from "./EventosModal";
+import { createArticle } from "../../api/articleManage";
 
 const Eventos = () => {
 	const [value, setValue] = useState("");
 	const handleEditorText = (text) => setValue(text);
 	const [open, setOpen] = useState(false);
+	const [selectedFile, setSelectedFile] = useState(null);
+
+	const handleFileChange = (event) => {
+		const file = event.target.files[0];
+		setSelectedFile(file);
+	};
+
+	const onSubmit = async () => {
+		const error = await createArticle(
+			//TODO aquí poner los datos de los input del title, description y date
+			{
+				title: "Carvanal",
+				date: "Febrero 19, 2023",
+			},
+			"eventos",
+			selectedFile
+		);
+		if (error) {
+			console.log("error papa");
+		}
+	};
 
 	return (
 		<Box
@@ -86,7 +108,7 @@ const Eventos = () => {
 							>
 								Imagen principal
 							</Typography>
-							<TextField type="file" />
+							<TextField onChange={handleFileChange} type="file" />
 						</Box>
 					</Paper>
 				</Box>
@@ -99,6 +121,7 @@ const Eventos = () => {
 				</Button>
 
 				<Button
+					onClick={onSubmit}
 					sx={{
 						mt: "10px",
 						ml: "10px",

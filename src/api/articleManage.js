@@ -5,19 +5,23 @@ import {
 	setDoc,
 	updateDoc,
 } from "firebase/firestore";
-import { db } from "./config";
+import { db, uploadFiles } from "./config";
 
-export const createArticle = async (article, articleType) => {
+export const createArticle = async (article, articleType, selectedFile) => {
 	const articleRef = collection(db, articleType);
 	const articleDoc = doc(articleRef);
-
 	await setDoc(articleDoc, article);
+
+	if (articleType == "eventos") {
+		const img = await uploadFiles(articleDoc.id, selectedFile);
+		console.log(img);
+	}
 };
 
-export const updateArticle = async (article, articleType) => {
+export const updateArticle = async (fields, articleType, articleId) => {
 	try {
-		const articleRef = doc(db, articleType, article.id);
-		await updateDoc(articleRef, article);
+		const articleRef = doc(db, articleType, articleId);
+		await updateDoc(articleRef, fields);
 	} catch (error) {
 		return error;
 	}
@@ -33,7 +37,7 @@ export const getArticles = (callback, articleType) => {
 			article.id = doc.id;
 			articles.push(article);
 		});
-
+		console.log(articles);
 		callback(articles);
 	});
 };

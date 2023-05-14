@@ -2,8 +2,9 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
-//import { updateUser } from "./auth";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { updateArticle } from "./articleManage";
+//import { updateUser } from "./media;
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,17 +30,17 @@ const db = getFirestore(app);
 
 const storage = getStorage(app);
 
-// const uploadFiles = async (uid, files) => {
-// 	try {
-// 		const imageRef = ref(storage, `users/${uid}`);
-// 		const resUpload = await uploadBytes(imageRef, files);
-// 		const url = await getDownloadURL(resUpload.ref);
-// 		await updateUser(uid, { image: url });
+const uploadFiles = async (id, files) => {
+	try {
+		const imageRef = ref(storage, `eventos/${id}`);
+		const resUpload = await uploadBytes(imageRef, files);
+		const url = await getDownloadURL(resUpload.ref);
+		await updateArticle({ img: url }, "eventos", id);
 
-// 		return url;
-// 	} catch (error) {
-// 		console.log(error);
-// 	}
-// };
+		return url;
+	} catch (error) {
+		console.log(error);
+	}
+};
 
-export { auth, db, storage };
+export { auth, db, storage, uploadFiles };
