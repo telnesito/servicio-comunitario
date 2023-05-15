@@ -5,6 +5,7 @@ import {
 	onSnapshot,
 	setDoc,
 	updateDoc,
+	deleteDoc
 } from "firebase/firestore";
 import { db, uploadFiles } from "./config";
 
@@ -58,6 +59,6 @@ export const getArticleById = async (articleId, articleType) => {
 	}
 };
 
-export const deleteDoc = async (articleId, articleType) => {
+export const deleteArticle = async (articleId, articleType) => {
 	await deleteDoc(doc(db, articleType, articleId));
 };

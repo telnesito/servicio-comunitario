@@ -1,28 +1,48 @@
-import { Box, Button, Paper, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { Box, Button, Paper, TextField, Typography, Snackbar, Alert, CardContent, Card, CardActions } from "@mui/material";
+import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { toolbarOptions } from "../../utils/functions/toolbarOptions";
-import EventosModal from "./EventosModal";
 import { createArticle } from "../../api/articleManage";
+import { deleteArticle, getArticleById, getArticles } from "../../api/articleManage";
+import parse from 'html-react-parser';
 
 const Eventos = () => {
 	const [value, setValue] = useState("");
 	const handleEditorText = (text) => setValue(text);
 	const [open, setOpen] = useState(false);
 	const [selectedFile, setSelectedFile] = useState(null);
+	const currentDate = new Date();
+	const [titulo, setTitulo] = useState('')
+	const [eventos, setEventos] = useState([])
 
 	const handleFileChange = (event) => {
 		const file = event.target.files[0];
 		setSelectedFile(file);
 	};
 
+	useEffect(() => {
+		getArticles((eventos) => {
+			setEventos(eventos);
+
+		}, "eventos");
+
+	}, []);
+
+	const handleDelete = async (id) => {
+		await deleteArticle(id, 'eventos')
+
+	}
+
 	const onSubmit = async () => {
+		setOpen(true)
 		const error = await createArticle(
-			//TODO aquí poner los datos de los input del title, description y date
+
+			// "Febrero 19, 2023" TODO aquí poner los datos de los input del title, description y date
 			{
-				title: "Carvanal",
-				date: "Febrero 19, 2023",
+				title: titulo,
+				date: `${currentDate.getMonth()} -  ${currentDate.getDate()} - ${currentDate.getFullYear()}`,
+				spoiler: value
 			},
 			"eventos",
 			selectedFile
@@ -31,6 +51,7 @@ const Eventos = () => {
 			console.log("error papa");
 		}
 	};
+	const handleTitle = ({ target }) => setTitulo(target.value)
 
 	return (
 		<Box
@@ -38,8 +59,8 @@ const Eventos = () => {
 			flexDirection={"column"}
 			alignItems={"center"}
 			width={"80%"}
-			height={"100vh"}
-			minHeight={"700px"}
+			height={"auto"}
+			minHeight={"800px"}
 			bgcolor={"var(--backgroundColor)"}
 		>
 			{/* Titulo */}
@@ -51,12 +72,16 @@ const Eventos = () => {
 						width={"100%"}
 						fontWeight={"700"}
 						color={"var(--primaryColor)"}
+
 					>
 						Titulo
 					</Typography>
 					<TextField
 						placeholder="Ingrese titulo del evento"
 						fullWidth
+						value={titulo}
+						onChange={handleTitle}
+
 					></TextField>
 				</Paper>
 			</Box>
@@ -82,59 +107,103 @@ const Eventos = () => {
 						theme="snow"
 					/>
 				</Paper>
-				<Box gap={"10px"} display={"flex"}>
-					<Paper sx={{ padding: "10px", mt: "10px" }} elevation={1}>
-						<Box>
-							<Typography
-								padding={"5px"}
-								variant="h6"
-								width={"100%"}
-								fontWeight={"700"}
-								color={"var(--primaryColor)"}
-							>
-								Fecha
-							</Typography>
-							<TextField type="date" />
-						</Box>
-					</Paper>
-					<Paper sx={{ padding: "10px", mt: "10px" }} elevation={1}>
-						<Box>
-							<Typography
-								padding={"5px"}
-								variant="h6"
-								width={"100%"}
-								fontWeight={"700"}
-								color={"var(--primaryColor)"}
-							>
-								Imagen principal
-							</Typography>
-							<TextField onChange={handleFileChange} type="file" />
-						</Box>
-					</Paper>
-				</Box>
-				<Button
-					sx={{ mt: "10px", bgcolor: "var(--primaryColor)" }}
-					onClick={() => setOpen(true)}
-					variant="contained"
-				>
-					Publicar
-				</Button>
 
-				<Button
-					onClick={onSubmit}
-					sx={{
-						mt: "10px",
-						ml: "10px",
-						borderColor: "var(--primaryColor)",
-						color: "var(--primaryColor)",
-					}}
-					variant="outlined"
-				>
-					Guardar
-				</Button>
+
+			</Box>
+			<Box height={'200px'} width={'95%'} flexDirection={'column'} display={"flex"}>
+
+				<Paper sx={{ padding: "10px" }} elevation={1}>
+					<Box>
+						<Typography
+							padding={"5px"}
+							variant="h6"
+							width={"100%"}
+							fontWeight={"700"}
+							color={"var(--primaryColor)"}
+						>
+							Imagen principal
+						</Typography>
+						<TextField onChange={handleFileChange} type="file" />
+					</Box>
+					<Button
+						onClick={onSubmit}
+						sx={{
+							mt: "10px",
+							ml: "10px",
+							bgcolor: "var(--primaryColor)",
+							color: "white",
+						}}
+						variant="contained"
+					>
+						Publicar
+					</Button>
+				</Paper>
+			</Box>
+			<Box
+				alignItems={"center"}
+				flexWrap={'wrap'}
+				gap={"30px"}
+				height={"auto"}
+				// mt={'180px'}
+				pb={'15px'}
+				width={'95%'}
+				display={"flex"}
+				justifyContent={"center"}
+
+
+			>
+				{eventos !== undefined ? (
+					<>
+						{eventos.map(({ title, id, spoiler }) => (
+							<Card
+								sx={{ width: "300px", height: "180px" }}
+								elevation={1}
+								key={id}
+							>
+								<CardContent>
+									<Typography variant="h6">{title.slice(0, 15)}</Typography>
+									<Box height={'60px'}
+										overflow={'hidden'}
+									>
+										{parse(spoiler.trim().slice(0, 100))}
+									</Box>
+
+									<CardActions>
+
+										<Button
+											sx={{
+												mt: "10px",
+												bgcolor: "var(--primaryColor)",
+												color: "white",
+											}}
+											variant="contained"
+											onClick={() => handleDelete(id)}
+										>
+											Eliminar
+										</Button>
+									</CardActions>
+								</CardContent>
+							</Card>
+						))}
+					</>
+				) : (
+					<Typography>No hay noticias</Typography>
+				)}
 			</Box>
 
-			<EventosModal open={open} setOpen={setOpen} />
+
+
+			<Snackbar
+				open={open}
+				autoHideDuration={6000}
+				onClose={() => setOpen(false)}
+
+			>
+
+				<Alert severity="success">
+					Evento publicado!
+				</Alert>
+			</Snackbar>
 		</Box>
 	);
 };

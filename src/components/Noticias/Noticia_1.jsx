@@ -5,6 +5,7 @@ import ScrollToTop from "../../utils/ScrollToTop";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { getArticleById } from "../../api/articleManage";
+import parse from 'html-react-parser';
 
 const Noticia_1 = ({ articleType }) => {
 	const { id } = useParams();
@@ -40,9 +41,9 @@ const Noticia_1 = ({ articleType }) => {
 						<Typography width={"90%"} variant="h3">
 							{article.title}
 						</Typography>
-						<Typography width={"90%"} variant="body2">
-							{article.description}
-						</Typography>
+						<Box width={"90%"}>
+							{parse(article.spoiler)}
+						</Box>
 					</Box>
 				) : (
 					<>No existe el articulo</>

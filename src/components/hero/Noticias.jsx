@@ -1,6 +1,6 @@
 import "./Hero.css";
 import { useNavigate } from "react-router";
-
+import { Box } from "@mui/material";
 const Noticias = ({ id, title, prevText, buttonText }) => {
 	const navigate = useNavigate();
 	return (
@@ -11,7 +11,7 @@ const Noticias = ({ id, title, prevText, buttonText }) => {
 			</span>
 
 			<span>
-				<p>{prevText}</p>
+				<Box width={'90%'}>{prevText}</Box>
 			</span>
 
 			<button onClick={() => navigate(`/noticias/${id}`)}>{buttonText}</button>

@@ -1,11 +1,11 @@
 import {
-	Backdrop,
+
 	Box,
 	Button,
 	Card,
 	CardActions,
 	CardContent,
-	CircularProgress,
+
 	Paper,
 	TextField,
 	Typography,
@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Aos from "aos";
-import { createArticle, getArticleById, getArticles, updateArticle } from "../../api/articleManage";
+import { createArticle, deleteArticle, getArticleById, getArticles, updateArticle } from "../../api/articleManage";
 import { toolbarOptions } from "../../utils/functions/toolbarOptions";
 import parse from 'html-react-parser';
 
@@ -60,6 +60,11 @@ const Noticias = () => {
 		if (error) {
 			console.log("error papa");
 		}
+
+	}
+
+	const handleDelete = async (id) => {
+		await deleteArticle(id, 'noticias')
 
 	}
 
@@ -150,7 +155,7 @@ const Noticias = () => {
 								key={id}
 							>
 								<CardContent>
-									<Typography variant="h6">{title}</Typography>
+									<Typography variant="h6">{title.slice(0, 15)}</Typography>
 									<Box height={'60px'}
 										overflow={'hidden'}
 									>
@@ -172,6 +177,7 @@ const Noticias = () => {
 												color: "var(--primaryColor)",
 											}}
 											variant="outlined"
+											onClick={() => handleDelete(id)}
 										>
 											Eliminar
 										</Button>
