@@ -10,9 +10,7 @@ const Noticias = ({ id, title, prevText, buttonText }) => {
 				<h1>{title}</h1>
 			</span>
 
-			<span>
-				<Box width={'90%'}>{prevText}</Box>
-			</span>
+			<Box width={'90%'}>{prevText}</Box>
 
 			<button onClick={() => navigate(`/noticias/${id}`)}>{buttonText}</button>
 		</div>
