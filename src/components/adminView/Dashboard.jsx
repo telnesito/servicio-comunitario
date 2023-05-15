@@ -3,13 +3,13 @@ import { MdNewspaper, MdEvent, MdGroups, MdLogin } from "react-icons/md";
 import { getUniqueId } from 'unique-id-generator-javascript'
 import { useNavigate } from "react-router";
 import { logOut } from "../Login/auth";
+import { useContext } from "react";
+import { LoginContext } from "../../hooks/ContextLoginProvider";
 const Nav = () => {
   const navigate = useNavigate()
-
+  const { uid, setUid } = useContext(LoginContext)
 
   const MENU_EDITOR = [
-
-
     {
       id: getUniqueId(),
       Icon: MdNewspaper,
@@ -34,7 +34,8 @@ const Nav = () => {
   const handleLogOut = async () => {
     try {
       await logOut()
-
+      setUid(false)
+      localStorage.removeItem('uid')
       navigate('/administracion')
 
     } catch (error) {
@@ -45,7 +46,7 @@ const Nav = () => {
 
   return (
     <Box borderRight={'1px solid #00000020'} width={'20%'} minWidth={'70px'} alignItems={'left'} justifyContent={'flex-start'} display={'flex'} flexDirection={'column'} bgcolor={'var(--primaryColor)'} height={'100vh'} minHeight={'700px'}>
-      <Box padding={'15px'} display={'flex'} alignItems={'center'} justifyContent={'center'}>
+      <Box sx={{ cursor: 'pointer' }} onClick={() => navigate('/')} padding={'15px'} display={'flex'} alignItems={'center'} justifyContent={'center'}>
         <img height={'95px'} width={'100px'} src="/src/assets/images/logoMetropolitano.png"></img>
         <Typography textAlign={'left'} width={'150px'} fontSize={'20px'} fontWeight={'700'} color={'white'}>Colegio Metropolitano</Typography>
       </Box>

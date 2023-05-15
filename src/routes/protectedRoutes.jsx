@@ -11,7 +11,11 @@ export const ProtectedLogin = ({ children, redirectTo }) => {
 
   return children
 }
-export const RedirectToAdmin = ({ children, redirectTo }) => {
+export const RedirectToAdmin = ({ children, redirectTo = '/administracion/main/noticias' }) => {
+  const { uid, } = useContext(LoginContext)
 
+  if (uid) {
+    return <Navigate to={`${redirectTo}`} replace></Navigate>
+  }
   return children
 }
