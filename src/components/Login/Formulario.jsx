@@ -25,6 +25,7 @@ const Formulario = () => {
 
       if (response.uid) {
         setUid(true)
+        localStorage.setItem('uid', true)
         console.log(uid)
         navigate('/administracion/main/noticias')
 
