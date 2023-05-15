@@ -51,7 +51,6 @@ export const getArticleById = async (articleId, articleType) => {
 		if (!articleDoc.exists()) {
 			return null;
 		}
-
 		const article = { ...articleDoc.data(), articleId };
 		return article;
 	} catch (error) {

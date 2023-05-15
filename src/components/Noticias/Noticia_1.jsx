@@ -8,10 +8,9 @@ import { getArticleById } from "../../api/articleManage";
 
 const Noticia_1 = () => {
 	const { id } = useParams();
-	const [article, setArticle] = useState(null);
+	const [article, setArticle] = useState();
 
 	useEffect(() => {
-		console.log(id);
 		const getArticle = async () => {
 			const aux = await getArticleById(id, "eventos");
 			setArticle(aux);
@@ -36,14 +35,18 @@ const Noticia_1 = () => {
 				minHeight={"400px"}
 				paddingTop={"20px"}
 			>
-				<Box width={"80%"} textAlign={"left"}>
-					<Typography width={"90%"} variant="h3">
-						{article.title}
-					</Typography>
-					<Typography width={"90%"} variant="body2">
-						{article.date}
-					</Typography>
-				</Box>
+				{article !== undefined ? (
+					<Box width={"80%"} textAlign={"left"}>
+						<Typography width={"90%"} variant="h3">
+							{article.title}
+						</Typography>
+						<Typography width={"90%"} variant="body2">
+							{article.description}
+						</Typography>
+					</Box>
+				) : (
+					<>No existe el articulo</>
+				)}
 			</Box>
 			<Foother />
 		</Box>

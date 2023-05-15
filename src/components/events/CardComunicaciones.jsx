@@ -6,7 +6,7 @@ const CardComunicaciones = ({ id, title, img, date, Icon }) => {
 	return (
 		<div
 			onClick={() => {
-				navigate(`/${id}`);
+				navigate(`/eventos/${id}`);
 				console.log(id);
 			}}
 			className="c-comunicaciones-card"
