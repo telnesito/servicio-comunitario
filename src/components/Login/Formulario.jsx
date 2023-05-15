@@ -25,9 +25,11 @@ const Formulario = () => {
 
       if (response.uid) {
         setUid(true)
+        console.log(uid)
         navigate('/administracion/main/noticias')
 
       }
+
 
     } catch (error) {
       console.log(error)
