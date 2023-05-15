@@ -57,3 +57,7 @@ export const getArticleById = async (articleId, articleType) => {
 		return null;
 	}
 };
+
+export const deleteDoc = async (articleId, articleType) => {
+	await deleteDoc(doc(db, articleType, articleId));
+};

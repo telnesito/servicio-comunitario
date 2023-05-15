@@ -1,24 +1,22 @@
-import './Hero.css'
-import { useNavigate } from 'react-router'
+import "./Hero.css";
+import { useNavigate } from "react-router";
 
-const Noticias = ({ title, prevText, buttonText, to }) => {
-  const navigate = useNavigate()
-  return (
-    <div className='noticias'>
-      <span className='hero-info-title'>
-        <h2>COLEGIO METROPOLITANO</h2>
-        <h1>{title}</h1>
-      </span>
+const Noticias = ({ id, title, prevText, buttonText }) => {
+	const navigate = useNavigate();
+	return (
+		<div className="noticias">
+			<span className="hero-info-title">
+				<h2>COLEGIO METROPOLITANO</h2>
+				<h1>{title}</h1>
+			</span>
 
-      <span>
-        <p>{prevText}</p>
-      </span>
+			<span>
+				<p>{prevText}</p>
+			</span>
 
-      <button onClick={() => navigate(to)}>{buttonText}</button>
+			<button onClick={() => navigate(`/noticias/${id}`)}>{buttonText}</button>
+		</div>
+	);
+};
 
-
-    </div>
-  )
-}
-
-export default Noticias
+export default Noticias;
