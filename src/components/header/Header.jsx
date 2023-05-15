@@ -15,7 +15,7 @@ const Header = () => {
         </span>
 
         <span className="c-h-logo">
-          t<img width={80} height={75} src="/src/assets/images/logoMetropolitano.png"></img>
+          <img width={80} height={75} src="img/logoMetropolitano.png"></img>
           <span>
             <p>COLEGIO</p>
             <p>METROPOLITANO</p>

@@ -14,14 +14,14 @@ const Conocenos = () => {
     [
       {
         id: getUniqueId(),
-        image: '/src/assets/images/proyectoPedagogico.png',
+        image: '/img/proyectoPedagogico.png',
         title: 'PROYECTO PEDAGOGICO',
         button: 'Ver mas',
         to: '/proyecto-pedagogico/'
       },
       {
         id: getUniqueId(),
-        image: '/src/assets/images/cuerpoDirectivo.png',
+        image: '/img/cuerpoDirectivo.png',
         title: 'CUERPO DIRECTIVO',
         button: 'Ver mas',
         to: '/cuerpo-directivo/'
@@ -29,14 +29,14 @@ const Conocenos = () => {
       },
       {
         id: getUniqueId(),
-        image: '/src/assets/images/history.png',
+        image: '/img/history.png',
         title: 'HISTORIA',
         button: 'Ver mas',
         to: '/historia/'
       },
       {
         id: getUniqueId(),
-        image: '/src/assets/images/Instalaciones.png',
+        image: '/img/Instalaciones.png',
         title: 'INSTALACIONES',
         button: 'Ver mas',
         to: '/instalaciones/'

@@ -7,7 +7,7 @@ const Foother = () => {
 
       <div className='f-colegio'>
         <h3>Metropolitano</h3>
-        <img height={'140px'} src='/src/assets/images/logoMetropolitano.png'></img>
+        <img height={'140px'} src='/img/logoMetropolitano.png'></img>
         <p>© 2023 Colegio Metropolitano Puerto Ordaz</p>
       </div>
       <div className='f-contacto'>

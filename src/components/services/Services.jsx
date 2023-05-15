@@ -21,7 +21,7 @@ const Services = () => {
         <div className='c-serivice-one'>
 
           <div className='c-service-inicial'>
-            <img src='/src/assets/images/EDUCACIONINICIAL.png'></img>
+            <img src='/img/EDUCACIONINICIAL.png'></img>
             <p>EDUCACION INICIAL</p>
           </div>
 
@@ -32,7 +32,7 @@ const Services = () => {
 
         <div className='c-serivice-one'>
           <div className='c-service-primaria'>
-            <img src='/src/assets/images/PRIMARIA.png'></img>
+            <img src='/img/PRIMARIA.png'></img>
             <p>EDUCACION PRIMARIA</p>
           </div>
           <p>La educación primaria es una etapa crucial en la formación de los niños y niñas, ya que es en esta etapa donde se sientan las bases de su educación y se adquieren las habilidades básicas para la vida</p>
@@ -40,7 +40,7 @@ const Services = () => {
 
         <div className='c-serivice-one'>
           <div className='c-service-tecnico'>
-            <img src='/src/assets/images/EDUCACIONTECNICA.png'></img>
+            <img src='/img/EDUCACIONTECNICA.png'></img>
             <p>EDUCACION MEDIA</p>
           </div>
           <p>La educación media, también conocida como educación secundaria, es una etapa clave en la formación de los jóvenes, ya que les proporciona las herramientas necesarias para su desarrollo personal, social y académico.</p>

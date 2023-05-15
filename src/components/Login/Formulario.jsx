@@ -44,7 +44,7 @@ const Formulario = () => {
     <div className="c-formulario-principal">
 
       <div className="c-logo-colegio">
-        <img width={'100px'} height={'95px'} src="/src/assets/images/logoMetropolitano.png"></img>
+        <img width={'100px'} height={'95px'} src="img/logoMetropolitano.png"></img>
         <p className="logo-titulo">GESTION ADMINISTRATIVA</p>
       </div>
 
