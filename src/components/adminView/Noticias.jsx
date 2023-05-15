@@ -1,9 +1,11 @@
 import {
+	Backdrop,
 	Box,
 	Button,
 	Card,
 	CardActions,
 	CardContent,
+	CircularProgress,
 	Paper,
 	TextField,
 	Typography,
@@ -12,8 +14,9 @@ import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Aos from "aos";
-import { createArticle, getArticles } from "../../api/articleManage";
+import { createArticle, getArticleById, getArticles, updateArticle } from "../../api/articleManage";
 import { toolbarOptions } from "../../utils/functions/toolbarOptions";
+import parse from 'html-react-parser';
 
 const Noticias = () => {
 	const [noticias, setNoticias] = useState([]);
@@ -21,11 +24,11 @@ const Noticias = () => {
 	useEffect(() => {
 		getArticles((noticias) => {
 			setNoticias(noticias);
+
 		}, "noticias");
 
 		Aos.init({ duration: 1000 });
 	}, []);
-
 	// Guardar valor
 	const [value, setValue] = useState("");
 	// Manejador que muestra el texto que se va escrbiendo
@@ -37,13 +40,28 @@ const Noticias = () => {
 	const onSubmit = async () => {
 		const error = await createArticle(
 			//TODO aquí poner los datos de la noticia
-			{ title: "Genocidio", spoiler: "wawawawa", date: "Febrero 30, 2222" },
+			{ title: titulo, spoiler: value, date: "Febrero 30, 2222" },
 			"noticias"
 		);
 		if (error) {
 			console.log("error papa");
 		}
 	};
+	const [titulo, setTitulo] = useState('')
+
+	const handleUpdate = async (id) => {
+		const noticia = await getArticleById(id, "noticias")
+		setTitulo(noticia.title)
+		setValue(noticia.spoiler)
+
+		const error = await updateArticle({ title: titulo, spoiler: value }, 'noticias', id)
+
+
+		if (error) {
+			console.log("error papa");
+		}
+
+	}
 
 	return (
 		// Contenedor general
@@ -52,10 +70,11 @@ const Noticias = () => {
 			flexDirection={"column"}
 			alignItems={"center"}
 			width={"80%"}
-			height={"100vh"}
-			minHeight={"700px"}
+			height={"auto"}
+			minHeight={"800px"}
 			bgcolor={"var(--backgroundColor)"}
 		>
+
 			{/* Titulo */}
 			<Box padding={"10px"} width={"95%"}>
 				<Paper elevation={1} sx={{ padding: "10px" }}>
@@ -71,6 +90,8 @@ const Noticias = () => {
 					<TextField
 						placeholder="Ingrese título de la noticia"
 						fullWidth
+						value={titulo}
+						onChange={({ target }) => setTitulo(target.value)}
 					></TextField>
 				</Paper>
 			</Box>
@@ -110,30 +131,39 @@ const Noticias = () => {
 			{/* Cartas */}
 			<Box
 				alignItems={"center"}
+				flexWrap={'wrap'}
 				gap={"30px"}
-				height={"270px"}
+				height={"auto"}
+				pb={'15px'}
+				width={'95%'}
 				display={"flex"}
 				justifyContent={"center"}
+
+
 			>
 				{noticias !== undefined ? (
 					<>
 						{noticias.map(({ title, id, spoiler }) => (
 							<Card
-								sx={{ width: "30%", height: "180px" }}
+								sx={{ width: "300px", height: "180px" }}
 								elevation={1}
 								key={id}
 							>
 								<CardContent>
 									<Typography variant="h6">{title}</Typography>
-									<Typography variant="body2">
-										{spoiler.slice(0, 100)}...
-									</Typography>
+									<Box height={'60px'}
+										overflow={'hidden'}
+									>
+										{parse(spoiler.trim().slice(0, 100))}
+									</Box>
+
 									<CardActions>
 										<Button
 											sx={{ mt: "10px", bgcolor: "var(--primaryColor)" }}
 											variant="contained"
+											onClick={() => handleUpdate(id)}
 										>
-											Subir
+											Editar
 										</Button>
 										<Button
 											sx={{
@@ -143,7 +173,7 @@ const Noticias = () => {
 											}}
 											variant="outlined"
 										>
-											Actualizar
+											Eliminar
 										</Button>
 									</CardActions>
 								</CardContent>
@@ -154,6 +184,7 @@ const Noticias = () => {
 					<Typography>No hay noticias</Typography>
 				)}
 			</Box>
+
 		</Box>
 	);
 };

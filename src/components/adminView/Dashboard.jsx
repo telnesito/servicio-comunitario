@@ -45,9 +45,9 @@ const Nav = () => {
 
 
   return (
-    <Box borderRight={'1px solid #00000020'} width={'20%'} minWidth={'70px'} alignItems={'left'} justifyContent={'flex-start'} display={'flex'} flexDirection={'column'} bgcolor={'var(--primaryColor)'} height={'100vh'} minHeight={'700px'}>
+    <Box borderRight={'1px solid #00000020'} width={'20%'} minWidth={'70px'} alignItems={'left'} justifyContent={'flex-start'} display={'flex'} flexDirection={'column'} bgcolor={'var(--primaryColor)'} height={'auto'} minHeight={'800px'}>
       <Box sx={{ cursor: 'pointer' }} onClick={() => navigate('/')} padding={'15px'} display={'flex'} alignItems={'center'} justifyContent={'center'}>
-        <img height={'95px'} width={'100px'} src="/src/assets/images/logoMetropolitano.png"></img>
+        <img height={'95px'} width={'100px'} src="/img/logoMetropolitano.png"></img>
         <Typography textAlign={'left'} width={'150px'} fontSize={'20px'} fontWeight={'700'} color={'white'}>Colegio Metropolitano</Typography>
       </Box>
       <Divider />
