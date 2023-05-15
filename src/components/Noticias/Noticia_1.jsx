@@ -6,13 +6,13 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { getArticleById } from "../../api/articleManage";
 
-const Noticia_1 = () => {
+const Noticia_1 = ({ articleType }) => {
 	const { id } = useParams();
 	const [article, setArticle] = useState();
 
 	useEffect(() => {
 		const getArticle = async () => {
-			const aux = await getArticleById(id, "eventos");
+			const aux = await getArticleById(id, articleType);
 			setArticle(aux);
 			console.log(article);
 		};

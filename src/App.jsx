@@ -21,8 +21,14 @@ function App() {
 			<ContextLoginProvider>
 				<Routes>
 					<Route path="/" element={<Inicio />}></Route>
-					<Route path="/noticias/:id" element={<Noticia_1 />}></Route>
-					<Route path="/eventos/:id" element={<Noticia_1 />}></Route>
+					<Route
+						path="/noticias/:id"
+						element={<Noticia_1 articleType={"noticias"} />}
+					></Route>
+					<Route
+						path="/eventos/:id"
+						element={<Noticia_1 articleType={"eventos"} />}
+					></Route>
 
 					{/* Login */}
 
