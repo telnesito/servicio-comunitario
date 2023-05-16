@@ -87,7 +87,7 @@
       rgba(120, 21, 21, 0.521),
       rgba(44, 10, 10, 0.521)
     ),
-    url(img/backgroundPrimaria.png);
+    url(/img/backgroundPrimaria.png);
 }
 
 .c-service-tecnico {
@@ -96,5 +96,5 @@
       rgba(120, 21, 21, 0.521),
       rgba(44, 10, 10, 0.521)
     ),
-    url(img/backgroundMedia.png);
+    url(/img/backgroundMedia.png);
 }
