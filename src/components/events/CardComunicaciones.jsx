@@ -10,7 +10,7 @@ const CardComunicaciones = ({ id, title, img, date, Icon }) => {
 			}}
 			className="c-comunicaciones-card"
 		>
-			<img width={"100%"} height={"75%"} src={img}></img>
+			<img width={"100%"} style={{ borderRadius: '10px' }} height={"75%"} src={img}></img>
 			<span className="c-c-descripcion">
 				<p className="c-c-title">{title}</p>
 				<div className="c-comunicaciones-divider" />

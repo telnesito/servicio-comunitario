@@ -24,6 +24,7 @@ const Comunicaciones = () => {
 				<div />
 				<h3>EVENTOS 2023-24</h3>
 			</span>
+			<Typography textAlign={'center'} color={'black'}>Celebra y conmemora todos los dias festivos y eventos dentro de <strong>nuestaras instalaciones!</strong></Typography>
 			{eventos !== undefined ? (
 				<div
 					data-aos="fade-up"
