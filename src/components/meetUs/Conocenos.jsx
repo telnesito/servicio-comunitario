@@ -4,6 +4,21 @@ import { useNavigate } from 'react-router'
 import { useEffect } from 'react'
 import Aos from 'aos'
 import "aos/dist/aos.css"
+import {
+
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+
+  Paper,
+  TextField,
+  Typography,
+  Drawer,
+  Divider,
+  IconButton,
+} from "@mui/material";
 const Conocenos = () => {
   useEffect(() => {
     Aos.init({ duration: 1000 })
@@ -45,14 +60,45 @@ const Conocenos = () => {
 
 
   return (
-    <div id='conocenos' className='c-conocenos-principal'>
-      <span data-aos="fade-left" className='c-conocenos-info'>
-        <h1>U. E Colegio Metropolitano</h1>
-        <p>El Colegio Metropolitano se creó en el mes de Septiembre del año 1988 y actualmente cuenta con  más de 27 promociones de bachilleres, todos ellos ubicados en estudios superiores o ya en el campo de trabajo.</p>
-      </span>
+    <Box display={'flex'}
+      flexDirection={'column'}
+      alignItems={'center'}
+      width={'100vw'}
+      height={'auto'}
+      bgcolor={'var(--backgroundColor)'}
+      id='conocenos'
+    >
+      <Box data-aos="fade-left"
+        display={'flex'}
+        flexDirection={'column'}
+        alignItems={'center'}
+        justifyContent={'center'}
+        width={'100%'}
+        height={'auto'}
+        color={'black'}
+      >
+        <Typography
+          textAlign={'center'}
+          width={'80%'}
+          fontSize={'2.5rem'} paddingTop={'40px'} fontWeight={'700'} color={'var(--primaryColor)'} variant='h1'>U. E Colegio Metropolitano</Typography>
+        <Typography mt={'15px'} textAlign={'center'}
+          width={'80%'}>El Colegio Metropolitano se creó en el mes de Septiembre del año 1988 y actualmente cuenta con  más de 27 promociones de bachilleres, todos ellos ubicados en estudios superiores o ya en el campo de trabajo.</Typography>
+      </Box>
 
-      <div data-aos="fade-up"
-        data-aos-anchor-placement="center-bottom" className='c-conocenos-services'>
+      <Box data-aos="fade-up"
+        data-aos-anchor-placement="center-bottom"
+        width={'100%'}
+        mt={'30px'}
+        height={'auto'}
+        display={'flex'}
+        flexWrap={'wrap'}
+        alignContent={'center'}
+        justifyContent={'center'}
+        gap={'50px'}
+        color={'var(--primaryColor)'}
+        textAlign={'center'}
+        fontWeight={'600'}
+        className='c-conocenos-services'>
         {SERVICES.map(({ id, title, image, button, to }) => {
           return (
             <div key={id}>
@@ -62,9 +108,9 @@ const Conocenos = () => {
             </div>
           );
         })}
-      </div>
+      </Box>
 
-    </div>
+    </Box>
   )
 }
 

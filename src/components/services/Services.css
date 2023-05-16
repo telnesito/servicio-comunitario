@@ -1,9 +1,11 @@
 .c-service-principal {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: black;
   width: 100vw;
-  height: 600px;
+  height: auto;
   background-color: var(--backgroundColor);
 }
 
@@ -23,21 +25,23 @@
 }
 
 .service-frase {
-  margin-top: 0;
-  margin-left: 180px;
+  width: 100%;
+  text-align: center;
 }
 
 .c-service-all {
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: 95%;
   display: flex;
+  flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
 }
 
 .c-serivice-one {
-  height: 300px;
-  width: 24.5%;
+  height: auto;
+  width: 25.5%;
+  min-width: 200px;
 }
 
 .c-serivice-one p {
