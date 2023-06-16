@@ -4,12 +4,7 @@ import {
 
   Box,
   Button,
-  Card,
-  CardActions,
-  CardContent,
 
-  Paper,
-  TextField,
   Typography,
   Drawer,
   Divider,
@@ -93,7 +88,7 @@ const Header = () => {
           </Box>
         </Box>
         <Box display={{ xs: 'none', md: 'block' }} width={'15%'}>
-          <Button sx={{ bgcolor: 'var(--primaryColor)' }} variant='contained' onClick={() => navigate('/administracion')} >Iniciar sesion</Button>
+          <Button color='primary' variant='contained' onClick={() => navigate('/administracion')} >Iniciar sesion</Button>
         </Box>
 
 

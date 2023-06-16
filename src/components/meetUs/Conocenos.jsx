@@ -104,7 +104,9 @@ const Conocenos = () => {
             <div key={id}>
               <img src={image} />
               <p>{title}</p>
-              <button onClick={() => navigate(to)}>{button}</button>
+              <Button sx={{
+                color: 'white'
+              }} variant='contained' color='secondary' onClick={() => navigate(to)}>{button}</Button>
             </div>
           );
         })}

@@ -12,7 +12,7 @@
 
 .c-hero-info {
   height: 100%;
-  width: 100%;
+  width: 80%;
   background-color: rgba(0, 0, 0, 0.587);
 }
 
@@ -46,12 +46,4 @@ h2 {
   position: relative;
   bottom: -20px;
   font-weight: bold;
-}
-
-.noticias button {
-  height: 50px;
-  width: 200px;
-  background-color: var(--onActionColor);
-  border: 0;
-  border-radius: 10px;
 }

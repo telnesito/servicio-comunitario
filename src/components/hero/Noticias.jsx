@@ -1,6 +1,6 @@
 import "./Hero.css";
 import { useNavigate } from "react-router";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 const Noticias = ({ id, title, prevText, buttonText }) => {
 	const navigate = useNavigate();
 	return (
@@ -12,7 +12,11 @@ const Noticias = ({ id, title, prevText, buttonText }) => {
 
 			<Box width={'90%'}>{prevText}</Box>
 
-			<button onClick={() => navigate(`/noticias/${id}`)}>{buttonText}</button>
+			<Button sx={{
+				width: '200px',
+				height: '50px',
+				color: 'white'
+			}} color="secondary" variant="contained" onClick={() => navigate(`/noticias/${id}`)}>{buttonText}</Button>
 		</div>
 	);
 };

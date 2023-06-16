@@ -1,19 +1,10 @@
+import { Link } from 'react-router-dom';
 import './Foother.css'
 import { IgButton } from './IgButton'
 import {
 
   Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
 
-  Paper,
-  TextField,
-  Typography,
-  Drawer,
-  Divider,
-  IconButton,
 } from "@mui/material";
 
 const Foother = () => {
@@ -42,11 +33,14 @@ const Foother = () => {
       </Box>
       <Box display={'flex'} alignItems={{ md: 'start', lg: 'start', xl: 'start', sm: 'center', xs: 'center' }} flexDirection={'column'} height={'100%'} width={{ lg: '25%', xl: '25%', md: '25%', sm: '100%', xs: '100%' }}  >
         <h3>Importante</h3>
-        <p>Comunicaciones</p>
-        <p>Proyecto Pedagogico</p>
-        <p>Historia</p>
-        <p>Instalaciones</p>
-        <p>Personal</p>
+        <Link to={'/administracion'}>Sesion administrativa</Link>
+        <Link to={'/proyecto-pedagogico'}>Proyecto Pedagogico</Link>
+        <Link to={'/historia'}>Historia</Link>
+
+        <Link to={'/galeria'}>Galeria</Link>
+
+        <Link to={'/cuerpo-directivo'}>Organigrama</Link>
+
       </Box>
 
     </Box>

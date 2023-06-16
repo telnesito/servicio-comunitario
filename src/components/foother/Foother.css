@@ -2,6 +2,12 @@
   font-size: 1.5rem;
 }
 
-.c-footer-principal p {
+.c-footer-principal p,
+.c-footer-principal a {
   margin: 8px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
