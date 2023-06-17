@@ -5,6 +5,7 @@ import './Formulario.css'
 import { login } from "./auth"
 import { useState, useContext, useEffect } from 'react'
 import { LoginContext } from "../../hooks/ContextLoginProvider"
+import { Button } from "@mui/material"
 const Formulario = () => {
   const navigate = useNavigate()
   const { uid, setUid } = useContext(LoginContext)
@@ -59,8 +60,8 @@ const Formulario = () => {
         </div>
 
         <div className="c-btn-login">
-          <button className="ingresar-btn" type="submit" >Ingresar</button>
-          <button className="volver-btn" onClick={() => navigate('/')}>Volver</button>
+          <Button variant="contained" color="primary" className="ingresar-btn" type="submit" >Ingresar</Button>
+          <Button variant="outlined" color="primary" className="volver-btn" onClick={() => navigate('/')}>Volver</Button>
         </div>
       </form>
 

@@ -20,7 +20,7 @@ import parse from 'html-react-parser';
 
 const Noticias = () => {
 	const [noticias, setNoticias] = useState([]);
-
+	const currentDate = new Date();
 	useEffect(() => {
 		getArticles((noticias) => {
 			setNoticias(noticias);
@@ -40,7 +40,7 @@ const Noticias = () => {
 	const onSubmit = async () => {
 		const error = await createArticle(
 			//TODO aquí poner los datos de la noticia
-			{ title: titulo, spoiler: value, date: "Febrero 30, 2222" },
+			{ title: titulo, spoiler: value, date: `${currentDate.getMonth()} -  ${currentDate.getDate()} - ${currentDate.getFullYear()}` },
 			"noticias"
 		);
 		if (error) {
