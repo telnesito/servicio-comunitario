@@ -39,8 +39,18 @@ const Noticia_1 = ({ articleType }) => {
 			<Header />
 			<ScrollToTop />
 			<Box
-				justifyContent={'center'}
 				display={'flex'}
+				sx={{
+					flexDirection: {
+						lg: 'row',
+						xl: 'row',
+						md: 'row',
+						sm: 'column',
+						xs: 'column'
+					}
+				}}
+
+				justifyContent={'center'}
 				bgcolor={"var(--backgroundColor)"}
 
 			>
@@ -115,7 +125,7 @@ const Noticia_1 = ({ articleType }) => {
 								flexDirection={'column'}
 								width={'85%'}
 								color={'black'}
-								href={id}
+								href={`/noticias/${id}`}
 								component={'a'}
 								sx={{
 									"&:hover": {
@@ -168,47 +178,64 @@ const Noticia_1 = ({ articleType }) => {
 						display={'flex'}
 						alignItems={'center'}
 						justifyContent={'center'}
+						flexDirection={'column'}
 					// bgcolor={'white'}
 					>
+						{
+							eventos.map(({ id, title, date }) =>
 
-						<Box
-							justifyContent={'center'}
-							padding={'10px'}
-							display={'flex'}
-							flexDirection={'column'}
-							width={'85%'}
-						>
+								<Box key={id}
+									justifyContent={'center'}
+									padding={'10px'}
+									display={'flex'}
+									flexDirection={'column'}
+									width={'85%'}
+									component={'a'}
+									href={`/eventos/${id}`}
 
-							<img src="/img/img9.webp"
-								height={'250px'}
-								width={'250px'}
-							>
-							</img>
-							<Box height={'60px'}
-								width={'250px'}
-								display={'flex'}
-								alignItems={'center'}
-								bgcolor={'var(--primaryColor)'}
-							>
+									sx={{
+										"&:hover": {
+											textDecoration: 'underline',
+											cursor: 'pointer',
+											color: 'white'
+										}
+									}}
+								>
 
-								<Box>
-									<Typography
-										ml={'10px'}
-										variant="body1"
-										color={'white'}
-										fontWeight={'700'}
-									>Dia del profesor</Typography>
+									<Box
 
-									<Typography
-										ml={'10px'}
-										variant="body2"
-										color={'white'}
-									>17/03/2023</Typography>
+										padding={'20px'}
+										sx={{
+											width: {
+												xs: '90%'
+											}
+										}}
+										display={'flex'}
+										alignItems={'center'}
+										bgcolor={'var(--primaryColor)'}
+									>
+
+										<Box>
+											<Typography
+												ml={'10px'}
+												variant="body1"
+												color={'white'}
+												fontWeight={'700'}
+											>{title}</Typography>
+
+											<Typography
+												ml={'10px'}
+												variant="body2"
+												color={'white'}
+											>{date}</Typography>
+										</Box>
+
+									</Box>
 								</Box>
+							)
+						}
 
-							</Box>
 
-						</Box>
 					</Box>
 				</Box>
 
