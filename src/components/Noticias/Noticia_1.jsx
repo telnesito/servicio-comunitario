@@ -56,7 +56,16 @@ const Noticia_1 = ({ articleType }) => {
 			>
 
 				<Box
-					width={"60%"}
+					sx={{
+						width: {
+							xl: '60%',
+							lg: '60%',
+							md: '60%',
+							sm: '90%',
+							xs: '90%'
+
+						}
+					}}
 					color={"black"}
 					bgcolor={"var(--backgroundColor)"}
 					display={"flex"}
@@ -87,6 +96,16 @@ const Noticia_1 = ({ articleType }) => {
 
 				</Box>
 				<Box
+					sx={{
+						width: {
+							xl: '20%',
+							lg: '20%',
+							md: '20%',
+							sm: '90%',
+							xs: '90%'
+
+						}
+					}}
 					bgcolor={'var(--backgroundColor)'}
 					width={'20%'}
 					color={'black'}

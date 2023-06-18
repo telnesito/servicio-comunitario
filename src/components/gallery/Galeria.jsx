@@ -71,9 +71,41 @@ const Galeria = () => {
 
   ];
   return (
-    <div className='c-a'>
+    <Box
+      height={'auto'}
+      bgcolor={'var(--backgroundColor)'}
+      width={'100vw'}
+      alignItems={'center'}
+      flexDirection={'column'}
+      justifyContent={'center'}
+      display={'flex'}
+      paddingBottom={'50px'}
+    >
 
-      <div className='prob-a'>
+      <Box
+        sx={{
+          width: {
+            xl: '70%',
+            lg: '70%',
+            md: '80%',
+            sm: '85%',
+            xs: '90%'
+          },
+          height: '100%',
+          display: 'flex',
+          gap: '30px',
+          flexDirection: {
+            xl: 'row',
+            lg: 'row',
+            md: 'row',
+            sm: 'column',
+            xs: 'column'
+          },
+          alignItems: 'initial',
+          marginTop: '30px',
+          justifyContent: 'center'
+        }}
+      >
         <Carousel className={'c-c'} showThumbs={false} autoPlay infiniteLoop transitionTime={2000} >
           {images.map(({ src }) =>
             <Box key={src}>
@@ -83,7 +115,19 @@ const Galeria = () => {
             </Box>
           )}
         </Carousel>
-        <Box height={'700px'} width={'50%'} display="flex" flexDirection={'column'} alignItems={'left'} justifyContent={'initial'}>
+        <Box height={'auto'}
+
+          sx={{
+            width: {
+              xl: '50%',
+              lg: '60%',
+              md: '80%',
+              sm: '80%',
+              xs: '100%'
+            }
+          }}
+
+          display="flex" flexDirection={'column'} alignItems={'left'} justifyContent={'initial'}>
           <Typography width={'100%'} variant="h6" fontWeight={700} color={'var(--primaryColor)'}>
             COLEGIO METROPOLITANO
           </Typography>
@@ -101,8 +145,8 @@ const Galeria = () => {
           </Typography>
           <Button sx={{ backgroundColor: 'var(--primaryColor)', marginTop: '15px' }} variant='contained'>Conoce mas!</Button>
         </Box>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 
