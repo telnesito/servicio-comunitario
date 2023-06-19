@@ -5,7 +5,7 @@ import './Formulario.css'
 import { login } from "./auth"
 import { useState, useContext, useEffect } from 'react'
 import { LoginContext } from "../../hooks/ContextLoginProvider"
-import { Button } from "@mui/material"
+import { Box, Button, Paper, TextField, Typography } from "@mui/material"
 const Formulario = () => {
   const navigate = useNavigate()
   const { uid, setUid } = useContext(LoginContext)
@@ -42,35 +42,72 @@ const Formulario = () => {
     setCredentials({ ...credentials, [name]: value })
   }
   return (
-    <div className="c-formulario-principal">
+    <Paper
+      elevation={4}
+      sx={{
+        width: '30%',
+        minWidth: '400px',
+        height: '50%',
+        minHeight: '350px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        opacity: '0.7'
 
-      <div className="c-logo-colegio">
-        <img width={'100px'} height={'95px'} src="img/logoMetropolitano.png"></img>
-        <p className="logo-titulo">GESTION ADMINISTRATIVA</p>
-      </div>
+      }}
 
-      <form onSubmit={handleLogin} className="c-form-login">
-        <div className="c-input">
-          <AiOutlineUser className="icon-login" />
-          <input required placeholder="Ingrese email" onChange={({ target }) => handleGetText('email', target.value)} type="email"></input>
-        </div>
-        <div className="c-input">
-          <AiOutlineLock className="icon-login" />
-          <input required placeholder="Ingrese contraseña" onChange={({ target }) => handleGetText('password', target.value)} type="password"></input>
-        </div>
 
-        <div className="c-btn-login">
-          <Button variant="contained" color="primary" className="ingresar-btn" type="submit" >Ingresar</Button>
-          <Button variant="outlined" color="primary" className="volver-btn" onClick={() => navigate('/')}>Volver</Button>
-        </div>
+    >
+      <Box
+        width={'90%'}
+        height={'80px'}
+        display={'flex'}
+        flexDirection={'column'}
+        gap={'10px'}
+
+      >
+        <Typography variant="h5">Iniciar sesion</Typography>
+        <Typography variant="body2">Accede a tu cuenta para continuar</Typography>
+      </Box>
+
+      <form
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          gap: '10px',
+          marginBottom: '20px',
+        }}
+
+        onSubmit={handleLogin} >
+        <Box
+          display={'flex'}
+          flexDirection={'column'}
+          gap={'10px'}
+          width={'90%'}
+        >
+          <TextField label={'Email'} variant="filled" required placeholder="Ingrese email" onChange={({ target }) => handleGetText('email', target.value)} type="email"></TextField>
+          <TextField label={'Contraseña'} variant="filled" required placeholder="Ingrese contraseña" onChange={({ target }) => handleGetText('password', target.value)} type="password"></TextField>
+
+          <p className="txt-abajo">Contraseña olvidada? <span
+            style={{
+              textDecoration: 'underline',
+              fontWeight: '700',
+              cursor: 'pointer'
+            }}
+          >Recuperar</span></p>
+          <Button variant="contained" size="large" color="primary" type="submit" >Ingresar</Button>
+        </Box>
+
       </form>
 
-      <p className="txt-abajo">Modificar contraseña</p>
-
-      <IgButton />
 
 
-    </div>
+
+    </Paper>
   )
 }
 
