@@ -4,6 +4,8 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { updateArticle } from "./articleManage";
+import { updateWorker } from "./organigramaManage";
+
 //Testing push
 //import { updateUser } from "./media;
 
@@ -44,4 +46,18 @@ const uploadFiles = async (id, files) => {
 	}
 };
 
-export { auth, db, storage, uploadFiles };
+const uploadWorkerImage = async (id, image, especilidad) => {
+	try {
+		const imgRef = ref(storage, `worker/${id}`)
+		const resUpload = await uploadBytes(imgRef, image)
+		console.log(resUpload)
+		const url = await getDownloadURL(resUpload.ref)
+		console.log(url)
+		await updateWorker({ img: url }, id, especilidad)
+		return url
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+export { auth, db, storage, uploadFiles, uploadWorkerImage };

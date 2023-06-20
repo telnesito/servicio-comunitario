@@ -3,57 +3,93 @@ import Foother from "../../components/foother/Foother"
 import Header from "../../components/header/Header"
 import Organigrama from "../../components/organigrama/Organigrama"
 import ScrollToTop from "../../utils/ScrollToTop"
+import { useEffect, useState } from "react"
+import { getWorkers } from "../../api/organigramaManage"
+import CardOrganigrama from "./CardOrganigrama"
+import Aos from 'aos'
+import "aos/dist/aos.css"
 const PageOrganigrama = () => {
+
+
+  const [cuerpoDirectivo, setCuerpoDirectivo] = useState([])
+  const [educacionInicial, setEducacionInicial] = useState([])
+  const [educacionPrimaria, setEducacionPrimaria] = useState([])
+  const [educacionMedia, setEducacionMedia] = useState([])
+  const [Mantenimiento, setMantenimiento] = useState([])
+  useEffect(() => {
+
+    getWorkers((cuerpoDirectivo) => setCuerpoDirectivo(cuerpoDirectivo), "Cuerpo directivo")
+    getWorkers((educacionInicial) => setEducacionInicial(educacionInicial), "Educacion inicial")
+    getWorkers((educacionPrimaria) => setEducacionPrimaria(educacionPrimaria), "Educacion primaria")
+    getWorkers((educacionMedia) => setEducacionMedia(educacionMedia), "Educacion media")
+    getWorkers((mantenimiento) => setMantenimiento(mantenimiento), "Mantenimiento")
+    Aos.init({ duration: 1000 })
+
+
+
+
+  }, [])
+
+
+
+
+
   return (
-    <div>
+    <Box
+      height={'100vh'}
+      bgcolor={'var(--primaryColor)'}
+    >
       <Header />
       <ScrollToTop />
       <Box
-        height={'auto'}
-        minHeight={'200px'}
         bgcolor={'var(--backgroundColor)'}
-        display={'flex'}
-        flexWrap={'wrap'}
-        alignItems={'center'}
-        justifyContent={'center'}
-        gap={'20px'}
+        paddingTop={'10px'}
       >
-        <Box
-          borderBottom={'3px solid var(--primaryColor)'}
-          borderRight={'5px solid var(--primaryColor)'}
-          borderRadius={'8px'}
-          width={'35%'}
-          minWidth={'400px'}
-          height={'80px'}
-          bgcolor={'white'}
-        >
-          <Box
-            display={'flex'}
-            width={'98%'}
-            height={'100%'}
-            justifyContent={'center'}
-            alignItems={'center'}
-            gap={'10px'}
-          >
-            <Box
-              display={'flex'}
-              width={'100%'}
-              flexDirection={'column'}
-              justifyContent={'center'}
-              alignItems={'end'}
-              color={'black'}
-            >
-              <Typography fontWeight={700}>Presidente</Typography>
-              <Typography>Hugo A. Yllaramendy Msc</Typography>
+        <Typography
+          fontWeight={700}
 
-            </Box>
-            <img style={{
-              width: '70px',
-              height: '70px',
-              borderRadius: '50%'
-            }} src="/img/foto-Colegio-Metro0.webp" alt="foto del presidente Hugo"></img>
-          </Box>
-        </Box>
+          width={'100%'}
+          textAlign={'center'}
+          variant="h5" color={'primary'}>Cuerpo directivo</Typography>
+
+        <CardOrganigrama workers={cuerpoDirectivo} />
+
+        <Typography
+          fontWeight={700}
+
+          width={'100%'}
+          textAlign={'center'}
+          variant="h5" color={'primary'}
+        >Educacion inicial</Typography>
+
+        <CardOrganigrama workers={educacionInicial} />
+
+        <Typography fontWeight={700}
+
+          width={'100%'}
+          textAlign={'center'}
+          variant="h5" color={'primary'}>Educacion primaria</Typography>
+
+        <CardOrganigrama workers={educacionPrimaria} />
+
+
+        <Typography fontWeight={700}
+
+          width={'100%'}
+          textAlign={'center'}
+          variant="h5" color={'primary'}>Educacion Media</Typography>
+
+        <CardOrganigrama workers={educacionMedia} />
+
+
+        <Typography fontWeight={700}
+
+          width={'100%'}
+          textAlign={'center'}
+          variant="h5" color={'primary'}>Mantenimiento</Typography>
+
+        <CardOrganigrama workers={Mantenimiento} />
+
 
 
 
@@ -61,9 +97,11 @@ const PageOrganigrama = () => {
 
 
       </Box>
-      <Organigrama />
+
+
+
       <Foother />
-    </div>
+    </Box>
   )
 }
 

@@ -14,7 +14,8 @@ const CardComunicaciones = ({ id, title, img, date, Icon }) => {
 			<span className="c-c-descripcion">
 				<p className="c-c-title">{title}</p>
 				<div className="c-comunicaciones-divider" />
-				<p> {date}</p>
+
+				<p><Icon />  {" " + date}</p>
 			</span>
 		</div>
 	);

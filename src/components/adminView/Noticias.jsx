@@ -74,7 +74,7 @@ const Noticias = () => {
 			display={"flex"}
 			flexDirection={"column"}
 			alignItems={"center"}
-			width={"80%"}
+			width={"100%"}
 			height={"auto"}
 			minHeight={"800px"}
 			bgcolor={"var(--backgroundColor)"}

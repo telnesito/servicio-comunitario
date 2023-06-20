@@ -45,16 +45,16 @@ const Nav = () => {
 
 
   return (
-    <Box borderRight={'1px solid #00000020'} width={'20%'} minWidth={'70px'} alignItems={'left'} justifyContent={'flex-start'} display={'flex'} flexDirection={'column'} bgcolor={'var(--primaryColor)'} height={'auto'} minHeight={'800px'}>
+    <Box borderRight={'1px solid #00000020'} width={'100%'} minWidth={'70px'} alignItems={'center'} justifyContent={'space-around'} display={'flex'} flexDirection={'row'} bgcolor={'var(--primaryColor)'} height={'90px'}>
+
       <Box sx={{ cursor: 'pointer' }} onClick={() => navigate('/')} padding={'15px'} display={'flex'} alignItems={'center'} justifyContent={'center'}>
-        <img height={'95px'} width={'100px'} src="/img/logoMetropolitano.png"></img>
+        <img height={'80px'} width={'90px'} src="/img/logoMetropolitano.png"></img>
         <Typography textAlign={'left'} width={'150px'} fontSize={'20px'} fontWeight={'700'} color={'white'}>Colegio Metropolitano</Typography>
       </Box>
-      <Divider />
       {
         MENU_EDITOR.map(({ id, Icon, title, to }) =>
           <Box display={'flex'} justifyContent={'left'} key={id}>
-            <Button onClick={() => navigate(to)} sx={{ display: 'flex', justifyContent: 'left', gap: '10px', padding: '20px' }} fullWidth type="text">
+            <Button onClick={() => navigate(to)} sx={{ display: 'flex', justifyContent: 'left', gap: '10px', padding: '20px' }} type="text">
               <Icon style={{ color: 'white', fontSize: '20px' }} />
               <Typography textTransform={'capitalize'} textAlign={'left'} color={'white'} sx={{ fontSize: '15px' }}>{title}</Typography>
             </Button>
@@ -62,7 +62,7 @@ const Nav = () => {
       }
       <Divider />
 
-      <Button onClick={handleLogOut} sx={{ display: 'flex', justifyContent: 'left', gap: '10px', padding: '20px' }} fullWidth type="text">
+      <Button variant="contained" color="secondary" onClick={handleLogOut} sx={{ display: 'flex', justifyContent: 'left', gap: '10px', padding: '20px' }} type="text">
         <MdLogin style={{ color: 'white', fontSize: '20px' }} />
         <Typography textTransform={'capitalize'} textAlign={'left'} color={'white'} sx={{ fontSize: '15px' }}>Cerrar sesion</Typography>
 
