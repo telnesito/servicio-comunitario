@@ -1,13 +1,12 @@
-import { Box, Divider, Button, Typography } from "@mui/material"
+import { Box, Divider, Button, Typography, Menu, MenuItem } from "@mui/material"
 import { MdNewspaper, MdEvent, MdGroups, MdLogin } from "react-icons/md";
 import { getUniqueId } from 'unique-id-generator-javascript'
 import { useNavigate } from "react-router";
 import { logOut } from "../Login/auth";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { LoginContext } from "../../hooks/ContextLoginProvider";
 const Nav = () => {
   const navigate = useNavigate()
-  const { uid, setUid } = useContext(LoginContext)
 
   const MENU_EDITOR = [
     {
@@ -30,6 +29,10 @@ const Nav = () => {
     },
 
   ]
+
+  const handleOrganigrama = () => {
+
+  }
 
   const handleLogOut = async () => {
     try {
@@ -67,6 +70,8 @@ const Nav = () => {
         <Typography textTransform={'capitalize'} textAlign={'left'} color={'white'} sx={{ fontSize: '15px' }}>Cerrar sesion</Typography>
 
       </Button>
+
+  
 
 
     </Box>
