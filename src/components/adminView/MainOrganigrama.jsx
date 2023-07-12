@@ -5,12 +5,15 @@ import {
   SpeedDial,
   SpeedDialAction,
   SpeedDialIcon,
+  Tab,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
+  Tabs,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
@@ -20,10 +23,13 @@ import {
   BsPersonFillGear,
   BsPersonFillAdd,
   BsPersonFillX,
+  BsPersonFillCheck,
 } from "react-icons/bs";
 
 import useModal from "../../hooks/useModal";
 import Organigrama from "./Organigrama";
+import { MdAccountCircle } from "react-icons/md";
+import TableWorkers from "./TableWorkers";
 const MainOrganigrama = () => {
   const { closeModal, openModal, open } = useModal();
 
@@ -55,16 +61,42 @@ const MainOrganigrama = () => {
     );
   }, []);
 
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <Box
       bgcolor={"var(--backgroundColor)"}
       width={"100%"}
-      height={"auto"}
+      height={"100vh"}
       minHeight={"700px"}
       display={"flex"}
-      justifyContent={"center"}
       alignItems={"center"}
+      flexDirection={'column'}
     >
+      <Box width={'100%'}
+        height={'60px'}
+        bgcolor={'var(--primaryColor)'}
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems={'center'}
+      >
+        <Box width={'90%'} display={'flex'} justifyContent={'space-between'}
+          alignItems={'center'}>
+          <Typography fontWeight={'600'} fontFamily={"Poppins"} color={"white"} fontSize={"20px"}>
+            Trabajadores
+          </Typography>
+
+          <IconButton size="large">
+            <MdAccountCircle size={'30px'} color="white" />
+          </IconButton>
+
+        </Box>
+
+      </Box>
       <Box
         flexDirection={"column"}
         gap={"20px"}
@@ -73,276 +105,36 @@ const MainOrganigrama = () => {
         height={"90%"}
         margin={"20px"}
       >
-        <Typography fontFamily={"Poppins"} color={"black"} fontSize={"20px"}>
-          Trabajadores
-        </Typography>
 
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Foto</TableCell>
-                <TableCell>Nombres</TableCell>
-                <TableCell>Apellidos</TableCell>
+        <Tabs sx={{
+          color: 'black',
+          width: '100%'
+        }} variant="scrollable" value={value} onChange={handleChange}>
+          <Tab label="Cuerpo directivo" />
+          <Tab label="Educacion inicial" />
+          <Tab label="Educacion primaria" />
+          <Tab label="Educacion Media" />
+          <Tab label="Mantenimiento" />
 
-                <TableCell>Cargo</TableCell>
-              </TableRow>
-            </TableHead>
+        </Tabs>
+        {value === 0 && <TableWorkers workers={cuerpoDirectivo} />}
+        {value === 1 && <TableWorkers workers={educacionInicial} />}
+        {value === 2 && <TableWorkers workers={educacionPrimaria} />}
+        {value === 3 && <TableWorkers workers={educacionMedia} />}
+        {value === 4 && <TableWorkers workers={Mantenimiento} />}
 
-            <TableBody>
-              {cuerpoDirectivo.map(
-                ({ nombres, apellidos, cargo, img }, index) => (
-                  <TableRow key={index}>
-                    <TableCell width={"5%"}>
-                      <img
-                        style={{
-                          overflow: "hidden",
-                          borderRadius: "50%",
-                        }}
-                        height={"70px"}
-                        width={"70px"}
-                        src={img}
-                      ></img>
-                    </TableCell>
 
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {nombres}
-                      </Typography>
-                    </TableCell>
 
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {apellidos}
-                      </Typography>
-                    </TableCell>
 
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {cargo}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                )
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
 
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Foto</TableCell>
-                <TableCell>Nombres</TableCell>
-                <TableCell>Apellidos</TableCell>
-
-                <TableCell>Cargo</TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {educacionInicial.map(
-                ({ nombres, apellidos, cargo, img }, index) => (
-                  <TableRow key={index}>
-                    <TableCell width={"5%"}>
-                      <img
-                        style={{
-                          overflow: "hidden",
-                          borderRadius: "50%",
-                        }}
-                        height={"70px"}
-                        width={"70px"}
-                        src={img}
-                      ></img>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {nombres}
-                      </Typography>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {apellidos}
-                      </Typography>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {cargo}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                )
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Foto</TableCell>
-                <TableCell>Nombres</TableCell>
-                <TableCell>Apellidos</TableCell>
-
-                <TableCell>Cargo</TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {educacionPrimaria.map(
-                ({ nombres, apellidos, cargo, img }, index) => (
-                  <TableRow key={index}>
-                    <TableCell width={"5%"}>
-                      <img
-                        style={{
-                          overflow: "hidden",
-                          borderRadius: "50%",
-                        }}
-                        height={"70px"}
-                        width={"70px"}
-                        src={img}
-                      ></img>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {nombres}
-                      </Typography>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {apellidos}
-                      </Typography>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {cargo}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                )
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Foto</TableCell>
-                <TableCell>Nombres</TableCell>
-                <TableCell>Apellidos</TableCell>
-
-                <TableCell>Cargo</TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {educacionMedia.map(
-                ({ nombres, apellidos, cargo, img }, index) => (
-                  <TableRow key={index}>
-                    <TableCell width={"5%"}>
-                      <img
-                        style={{
-                          overflow: "hidden",
-                          borderRadius: "50%",
-                        }}
-                        height={"70px"}
-                        width={"70px"}
-                        src={img}
-                      ></img>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {nombres}
-                      </Typography>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {apellidos}
-                      </Typography>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {cargo}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                )
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Foto</TableCell>
-                <TableCell>Nombres</TableCell>
-                <TableCell>Apellidos</TableCell>
-
-                <TableCell>Cargo</TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {Mantenimiento.map(
-                ({ nombres, apellidos, cargo, img }, index) => (
-                  <TableRow key={index}>
-                    <TableCell width={"5%"}>
-                      <img
-                        style={{
-                          overflow: "hidden",
-                          borderRadius: "50%",
-                        }}
-                        height={"70px"}
-                        width={"70px"}
-                        src={img}
-                      ></img>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {nombres}
-                      </Typography>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {apellidos}
-                      </Typography>
-                    </TableCell>
-
-                    <TableCell width={"30%"}>
-                      <Typography fontFamily={"Poppins"} color={"black"}>
-                        {cargo}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                )
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
       </Box>
       <SpeedDial
+
         sx={{
           position: "fixed",
           zIndex: "9999",
           bottom: "20px",
-          right: "20px",
+          right: "40px",
         }}
         ariaLabel="Editar trabajadores"
         icon={<SpeedDialIcon />}

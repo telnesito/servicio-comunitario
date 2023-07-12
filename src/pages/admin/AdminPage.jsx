@@ -4,8 +4,9 @@ import { Outlet } from "react-router";
 
 const AdminPage = () => {
 	return (
-		<Box display={"flex"} flexDirection={'column'} width={"100vw"}>
+		<Box display={"flex"} flexDirection={'row'} width={"100vw"}>
 			<Dashboard />
+
 
 			<Outlet />
 		</Box>

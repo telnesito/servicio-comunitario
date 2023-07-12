@@ -30,9 +30,6 @@ const Nav = () => {
 
   ]
 
-  const handleOrganigrama = () => {
-
-  }
 
   const handleLogOut = async () => {
     try {
@@ -48,30 +45,47 @@ const Nav = () => {
 
 
   return (
-    <Box borderRight={'1px solid #00000020'} width={'100%'} minWidth={'70px'} alignItems={'center'} justifyContent={'space-around'} display={'flex'} flexDirection={'row'} bgcolor={'var(--primaryColor)'} height={'90px'}>
+    <Box sx={{
+      display: {
+        xs: 'none',
+        sm: 'none',
+        md: 'flex',
+        lg: 'flex',
+        xl: 'flex'
 
-      <Box sx={{ cursor: 'pointer' }} onClick={() => navigate('/')} padding={'15px'} display={'flex'} alignItems={'center'} justifyContent={'center'}>
-        <img height={'80px'} width={'90px'} src="/img/logoMetropolitano.png"></img>
-        <Typography textAlign={'left'} width={'150px'} fontSize={'20px'} fontWeight={'700'} color={'white'}>Colegio Metropolitano</Typography>
-      </Box>
-      {
-        MENU_EDITOR.map(({ id, Icon, title, to }) =>
-          <Box display={'flex'} justifyContent={'left'} key={id}>
-            <Button onClick={() => navigate(to)} sx={{ display: 'flex', justifyContent: 'left', gap: '10px', padding: '20px' }} type="text">
-              <Icon style={{ color: 'white', fontSize: '20px' }} />
-              <Typography textTransform={'capitalize'} textAlign={'left'} color={'white'} sx={{ fontSize: '15px' }}>{title}</Typography>
-            </Button>
-          </Box>)
+
       }
-      <Divider />
+    }} borderRight={'1px solid #00000020'} width={'280px'} display={'flex'} flexDirection={'column'} minHeight={'700px'} bgcolor={'white'} height={'auto'} justifyContent={'space-between'}>
+      <Box
+        mt={'60px'}
+      >
+        <Divider />
+        {
+          MENU_EDITOR.map(({ id, Icon, title, to }) =>
+            <Box display={'flex'} justifyContent={'left'} key={id}>
+              <Button onClick={() => navigate(to)} sx={{ display: 'flex', justifyContent: 'left', gap: '25px', padding: '15px', width: '100%' }} type="text">
+                <Icon fontSize={'20px'} color="#00000090" />
+                <Typography textTransform={'capitalize'} textAlign={'left'} color={'black'} fontFamily={'Poppins'} sx={{ fontSize: '15px' }}>{title}</Typography>
+              </Button>
+            </Box>)
+        }
+        <Divider />
 
-      <Button variant="contained" color="secondary" onClick={handleLogOut} sx={{ display: 'flex', justifyContent: 'left', gap: '10px', padding: '20px' }} type="text">
-        <MdLogin style={{ color: 'white', fontSize: '20px' }} />
-        <Typography textTransform={'capitalize'} textAlign={'left'} color={'white'} sx={{ fontSize: '15px' }}>Cerrar sesion</Typography>
 
-      </Button>
+      </Box>
 
-  
+      <Box
+        mb={'20px'}
+        display={'flex'}
+        alignItems={'center'}
+        justifyContent={'center'}
+        width={'100%'}
+      >
+        <img width={'70px'} src="/img/logoMetropolitano.png" />
+        <Typography fontFamily={'Poppins'} color={'var(--primaryColor)'}>Colegio Metropolitano</Typography>
+      </Box>
+
+
 
 
     </Box>
