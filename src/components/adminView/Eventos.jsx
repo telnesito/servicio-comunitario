@@ -1,4 +1,4 @@
-import { Box, Button, Paper, TextField, Typography, Snackbar, Alert, CardContent, Card, CardActions } from "@mui/material";
+import { Box, Button, Paper, TextField, Typography, Snackbar, Alert, CardContent, Card, CardActions, Tab, Tabs, TableHead, TableRow, TableCell, Table, TableBody } from "@mui/material";
 import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -6,6 +6,10 @@ import { toolbarOptions } from "../../utils/functions/toolbarOptions";
 import { createArticle } from "../../api/articleManage";
 import { deleteArticle, getArticleById, getArticles } from "../../api/articleManage";
 import parse from 'html-react-parser';
+import NavBar from "./NavBar";
+import { useNavigate } from "react-router";
+import useModal from "../../hooks/useModal";
+import ConfirmAction from "../ConfirmAction";
 
 const Eventos = () => {
 	const [value, setValue] = useState("");
@@ -15,6 +19,10 @@ const Eventos = () => {
 	const currentDate = new Date();
 	const [titulo, setTitulo] = useState('')
 	const [eventos, setEventos] = useState([])
+	const navigate = useNavigate()
+	const [idToDelete, setIdToDelete] = useState('')
+
+	const { closeModal, open: isOpen, openModal } = useModal()
 
 	const handleFileChange = (event) => {
 		const file = event.target.files[0];
@@ -29,29 +37,39 @@ const Eventos = () => {
 
 	}, []);
 
-	const handleDelete = async (id) => {
-		await deleteArticle(id, 'eventos')
-
+	const handleDelete = async () => {
+		await deleteArticle(idToDelete, 'eventos')
 	}
 
-	const onSubmit = async () => {
+	const onSubmit = async (e) => {
+		e.preventDefault()
 		setOpen(true)
 		const error = await createArticle(
 
 			// "Febrero 19, 2023" TODO aquí poner los datos de los input del title, description y date
 			{
 				title: titulo,
-				date: `${currentDate.getMonth()} -  ${currentDate.getDate()} - ${currentDate.getFullYear()}`,
+				date: `${currentDate.getDate()} / ${currentDate.getMonth() + 1} / ${currentDate.getFullYear()}`,
 				spoiler: value
 			},
 			"eventos",
 			selectedFile
 		);
+
+		setTitulo('')
+		setValue('')
+		setSelectedFile([])
 		if (error) {
 			console.log("error papa");
 		}
 	};
 	const handleTitle = ({ target }) => setTitulo(target.value)
+
+	const [tabIndex, setTabIndex] = useState(0);
+
+	const handleChange = (event, newValue) => {
+		setTabIndex(newValue);
+	};
 
 	return (
 		<Box
@@ -60,138 +78,213 @@ const Eventos = () => {
 			alignItems={"center"}
 			width={"100%"}
 			height={"auto"}
-			minHeight={"800px"}
+			minHeight={"750px"}
 			bgcolor={"var(--backgroundColor)"}
 		>
+			<NavBar title={'Eventos'} />
+
 			{/* Titulo */}
-			<Box padding={"10px"} width={"95%"}>
-				<Paper elevation={1} sx={{ padding: "10px" }}>
-					<Typography
-						padding={"5px"}
-						variant="h6"
-						width={"100%"}
-						fontWeight={"700"}
-						color={"var(--primaryColor)"}
+			<Tabs sx={{
+				mt: '20px',
+				mb: '20px',
+				bgcolor: 'background.paper',
+				width: '90%',
+				borderRadius: '5px',
+				color: 'black',
+			}}
+				variant="fullWidth"
 
-					>
-						Titulo
-					</Typography>
-					<TextField
-						placeholder="Ingrese titulo del evento"
-						fullWidth
-						value={titulo}
-						onChange={handleTitle}
+				value={tabIndex} onChange={handleChange}>
+				<Tab label="Agregar evento" />
+				<Tab label="Ver evento" />
 
-					></TextField>
-				</Paper>
-			</Box>
-
-			<Box width={"95%"} height={"450px"} color={"black"}>
-				<Paper sx={{ padding: "10px", height: "400px" }} elevation={1}>
-					<Typography
-						fontWeight={"700"}
-						color={"var(--primaryColor)"}
-						padding={"5px"}
-						variant="h6"
-						width={"100%"}
-					>
-						Descripcion
-					</Typography>
-					{/* Editor de texto */}
-					<ReactQuill
-						value={value}
-						onChange={handleEditorText}
-						placeholder="Ingrese la descripcion"
-						style={{ height: "310px" }}
-						modules={toolbarOptions}
-						theme="snow"
-					/>
-				</Paper>
+			</Tabs>
+			{tabIndex === 0 && <>
 
 
-			</Box>
-			<Box height={'200px'} width={'95%'} flexDirection={'column'} display={"flex"}>
 
-				<Paper sx={{ padding: "10px" }} elevation={1}>
-					<Box>
+				<Box component={'form'} onSubmit={onSubmit} boxSizing={'border-box'} width={"90%"} height={"auto"} color={"black"}>
+					<Paper sx={{ padding: "10px", height: "auto" }} elevation={1}>
 						<Typography
 							padding={"5px"}
 							variant="h6"
 							width={"100%"}
 							fontWeight={"700"}
 							color={"var(--primaryColor)"}
+
 						>
-							Imagen principal
+							Titulo
 						</Typography>
-						<TextField onChange={handleFileChange} type="file" />
-					</Box>
-					<Button
-						onClick={onSubmit}
-						sx={{
-							mt: "10px",
-							ml: "10px",
-							bgcolor: "var(--primaryColor)",
-							color: "white",
-						}}
-						variant="contained"
-					>
-						Publicar
-					</Button>
-				</Paper>
-			</Box>
-			<Box
-				alignItems={"center"}
-				flexWrap={'wrap'}
-				gap={"30px"}
-				height={"auto"}
-				// mt={'180px'}
-				pb={'15px'}
-				width={'95%'}
-				display={"flex"}
-				justifyContent={"center"}
+						<TextField
+							required
+							variant="standard"
+							placeholder="Ingrese titulo del evento"
+							fullWidth
+							value={titulo}
+							onChange={handleTitle}
+
+						></TextField>
+						<Typography
+							fontWeight={"700"}
+							color={"var(--primaryColor)"}
+							padding={"5px"}
+							variant="h6"
+							width={"100%"}
+
+						>
+							Descripcion
+						</Typography>
+						{/* Editor de texto */}
+						<ReactQuill
+
+							value={value}
+							onChange={handleEditorText}
+							placeholder="Ingrese la descripcion"
+							style={{ height: "250px", maxWidth: '1000px' }}
+							modules={toolbarOptions}
+							theme="snow"
+
+						/>
+
+						<Box mt={'60px'}>
+
+							<TextField required onChange={handleFileChange} type="file" />
+						</Box>
+						<Button
+							type="submit"
+							sx={{
+								mt: "10px",
+								ml: "10px",
+								bgcolor: "var(--primaryColor)",
+								color: "white",
+							}}
+							variant="contained"
+						>
+							Publicar
+						</Button>
+					</Paper>
 
 
-			>
-				{eventos !== undefined ? (
-					<>
-						{eventos.map(({ title, id, spoiler }) => (
-							<Card
-								sx={{ width: "300px", height: "180px" }}
-								elevation={1}
-								key={id}
+				</Box>
+
+
+			</>}
+			{tabIndex === 1 && <>
+				<Box
+					alignItems={"center"}
+					flexWrap={'wrap'}
+					gap={"30px"}
+					pb={'15px'}
+					width={'100%'}
+					maxHeight={'550px'}
+					overflow={'auto'}
+					display={"flex"}
+					justifyContent={"center"}
+
+
+				>
+					{eventos !== undefined ? (
+						<>
+							<Table
+								sx={{
+									borderRadius: '5px',
+									width: '90%',
+									bgcolor: 'background.paper'
+								}}
 							>
-								<CardContent>
-									<Typography variant="h6">{title.slice(0, 15)}</Typography>
-									<Box height={'60px'}
-										overflow={'hidden'}
-									>
-										{parse(spoiler.trim().slice(0, 100))}
-									</Box>
-
-									<CardActions>
-
-										<Button
+								<TableHead>
+									<TableRow>
+										<TableCell
 											sx={{
-												mt: "10px",
-												bgcolor: "var(--primaryColor)",
-												color: "white",
+												width: '20%'
 											}}
-											variant="contained"
-											onClick={() => handleDelete(id)}
 										>
-											Eliminar
-										</Button>
-									</CardActions>
-								</CardContent>
-							</Card>
-						))}
-					</>
-				) : (
-					<Typography>No hay noticias</Typography>
-				)}
-			</Box>
+											<b>
+												Titulo
+
+											</b>
+										</TableCell>
+										<TableCell
+											sx={{
+												width: '30%'
+											}}
+										>
+
+											<b>
+
+												Fecha
+											</b>
+										</TableCell>
+										<TableCell>
+
+											<b>
+												Accion
+
+											</b>
+										</TableCell>
+									</TableRow>
+								</TableHead>
+								<TableBody
+
+								>
+									{eventos.map(({ title, id, spoiler, date }) => (
+										<TableRow key={id}>
+											<TableCell>
+												{title}
+
+											</TableCell>
+
+											<TableCell>
+												{date}
+											</TableCell>
 
 
+											<TableCell>
+												<Box display={'flex'} gap={'10px'} alignItems={'center'} height={'50px'}>
+													<Button
+														sx={{
+															bgcolor: "var(--primaryColor)",
+															color: "white",
+														}}
+														variant="contained"
+														onClick={() => {
+
+															setIdToDelete(id)
+															openModal()
+														}}
+
+													>
+														Eliminar
+													</Button>
+													<Button onClick={() => navigate(`/eventos/${id}	`)}>Ver</Button>
+												</Box>
+											</TableCell>
+
+
+
+										</TableRow>
+
+
+									))}
+								</TableBody>
+							</Table>
+						</>
+					) : (
+						<Typography>No hay noticias</Typography>
+					)}
+				</Box>
+
+			</>}
+
+
+
+
+
+
+
+			<ConfirmAction open={isOpen} onClose={closeModal} action={handleDelete} target={'evento'} />
+
+			{console.log(idToDelete)}
 
 			<Snackbar
 				open={open}

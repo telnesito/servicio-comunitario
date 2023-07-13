@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { logOut } from "../Login/auth";
 import { useContext, useState } from "react";
 import { LoginContext } from "../../hooks/ContextLoginProvider";
+import { BsViewList } from "react-icons/bs";
 const Nav = () => {
   const navigate = useNavigate()
 
@@ -55,7 +56,7 @@ const Nav = () => {
 
 
       }
-    }} borderRight={'1px solid #00000020'} width={'280px'} display={'flex'} flexDirection={'column'} minHeight={'700px'} bgcolor={'white'} height={'auto'} justifyContent={'space-between'}>
+    }} width={'280px'} display={'flex'} flexDirection={'column'} minHeight={'700px'} bgcolor={'white'} height={'auto'} justifyContent={'space-between'}>
       <Box
         mt={'60px'}
       >
@@ -70,6 +71,10 @@ const Nav = () => {
             </Box>)
         }
         <Divider />
+        <Button onClick={() => navigate('/')} sx={{ display: 'flex', justifyContent: 'left', gap: '25px', padding: '15px', width: '100%' }} type="text">
+          <BsViewList fontSize={'20px'} color="#00000090" />
+          <Typography textTransform={'capitalize'} textAlign={'left'} color={'black'} fontFamily={'Poppins'} sx={{ fontSize: '15px' }}>Vista previa</Typography>
+        </Button>
 
 
       </Box>

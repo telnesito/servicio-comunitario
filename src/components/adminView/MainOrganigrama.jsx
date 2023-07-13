@@ -30,6 +30,7 @@ import useModal from "../../hooks/useModal";
 import Organigrama from "./Organigrama";
 import { MdAccountCircle } from "react-icons/md";
 import TableWorkers from "./TableWorkers";
+import NavBar from "./NavBar";
 const MainOrganigrama = () => {
   const { closeModal, openModal, open } = useModal();
 
@@ -71,32 +72,14 @@ const MainOrganigrama = () => {
     <Box
       bgcolor={"var(--backgroundColor)"}
       width={"100%"}
+      boxSizing={'border-box'}
       height={"100vh"}
       minHeight={"700px"}
       display={"flex"}
       alignItems={"center"}
       flexDirection={'column'}
     >
-      <Box width={'100%'}
-        height={'60px'}
-        bgcolor={'var(--primaryColor)'}
-        display={'flex'}
-        justifyContent={'center'}
-        alignItems={'center'}
-      >
-        <Box width={'90%'} display={'flex'} justifyContent={'space-between'}
-          alignItems={'center'}>
-          <Typography fontWeight={'600'} fontFamily={"Poppins"} color={"white"} fontSize={"20px"}>
-            Trabajadores
-          </Typography>
-
-          <IconButton size="large">
-            <MdAccountCircle size={'30px'} color="white" />
-          </IconButton>
-
-        </Box>
-
-      </Box>
+      <NavBar title={'Trabajadores'} />
       <Box
         flexDirection={"column"}
         gap={"20px"}
@@ -107,9 +90,13 @@ const MainOrganigrama = () => {
       >
 
         <Tabs sx={{
+          bgcolor: 'background.paper',
+          borderRadius: '5px',
           color: 'black',
-          width: '100%'
-        }} variant="scrollable" value={value} onChange={handleChange}>
+        }}
+          variant="scrollable"
+          scrollButtons="auto"
+          value={value} onChange={handleChange}>
           <Tab label="Cuerpo directivo" />
           <Tab label="Educacion inicial" />
           <Tab label="Educacion primaria" />
@@ -134,7 +121,7 @@ const MainOrganigrama = () => {
           position: "fixed",
           zIndex: "9999",
           bottom: "20px",
-          right: "40px",
+          right: "5%",
         }}
         ariaLabel="Editar trabajadores"
         icon={<SpeedDialIcon />}
