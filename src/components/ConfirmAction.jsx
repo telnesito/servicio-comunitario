@@ -25,10 +25,14 @@ const ConfirmAction = ({ open, onClose, action, target }) => {
         }}
 
       >
-        {target === "noticia" ? <Typography>Estas seguro que desea eliminar esta noticia?</Typography> : <Typography>Estas seguro que desea eliminar este evento?</Typography>}
 
-
-
+        {target === "noticia" ?
+          <Typography>Estas seguro que desea eliminar esta noticia?</Typography>
+          : target === "evento" ?
+            <Typography>Estas seguro que desea eliminar este evento?</Typography>
+            :
+            <Typography>Estas seguro que desea eliminar este trabajador?</Typography>
+        }
 
 
         <Box

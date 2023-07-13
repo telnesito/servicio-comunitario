@@ -36,7 +36,7 @@ export const updateWorker = async (newData, workerId, especilidad) => {
 }
 
 export const deleteWorker = async (workerId, especilidad) => {
-  await deleteDoc(doc(db, "worker", especilidad, workerId))
+  await deleteDoc(doc(db, especilidad, workerId))
 }
 
 

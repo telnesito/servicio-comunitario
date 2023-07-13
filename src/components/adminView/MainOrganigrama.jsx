@@ -31,8 +31,10 @@ import Organigrama from "./Organigrama";
 import { MdAccountCircle } from "react-icons/md";
 import TableWorkers from "./TableWorkers";
 import NavBar from "./NavBar";
+import DeleteWorker from "./DeleteWorker";
 const MainOrganigrama = () => {
   const { closeModal, openModal, open } = useModal();
+  const { closeModal: closeDelete, openModal: openDelete, open: isOpenDelete } = useModal()
 
   const [cuerpoDirectivo, setCuerpoDirectivo] = useState([]);
   const [educacionInicial, setEducacionInicial] = useState([]);
@@ -104,11 +106,11 @@ const MainOrganigrama = () => {
           <Tab label="Mantenimiento" />
 
         </Tabs>
-        {value === 0 && <TableWorkers workers={cuerpoDirectivo} />}
-        {value === 1 && <TableWorkers workers={educacionInicial} />}
-        {value === 2 && <TableWorkers workers={educacionPrimaria} />}
-        {value === 3 && <TableWorkers workers={educacionMedia} />}
-        {value === 4 && <TableWorkers workers={Mantenimiento} />}
+        {value === 0 && <TableWorkers especilidad={'Cuerpo directivo'} workers={cuerpoDirectivo} />}
+        {value === 1 && <TableWorkers especilidad={'Educacion inicial'} workers={educacionInicial} />}
+        {value === 2 && <TableWorkers especilidad={'Educacion primaria'} workers={educacionPrimaria} />}
+        {value === 3 && <TableWorkers especilidad={'Educacion media'} workers={educacionMedia} />}
+        {value === 4 && <TableWorkers especilidad={'Mantenimiento'} workers={Mantenimiento} />}
 
 
 
@@ -138,12 +140,14 @@ const MainOrganigrama = () => {
         ></SpeedDialAction>
 
         <SpeedDialAction
+          onClick={openDelete}
           icon={<BsPersonFillX size={"25px"} color="var(--primaryColor)" />}
           tooltipTitle={"Eliminar trabajador"}
         ></SpeedDialAction>
       </SpeedDial>
 
       <Organigrama open={open} closeModal={closeModal} />
+      <DeleteWorker isOpen={isOpenDelete} onClose={closeDelete} />
     </Box>
   );
 };

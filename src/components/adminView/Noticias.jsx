@@ -8,6 +8,11 @@ import {
 
 	Paper,
 	Tab,
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableRow,
 	Tabs,
 	TextField,
 	Typography,
@@ -22,12 +27,15 @@ import parse from 'html-react-parser';
 import NavBar from "./NavBar";
 import useModal from "../../hooks/useModal";
 import ConfirmAction from "../ConfirmAction";
+import { useNavigate } from "react-router";
 
 const Noticias = () => {
 	const [noticias, setNoticias] = useState([]);
 	const currentDate = new Date();
 	const { closeModal, open, openModal } = useModal()
 	const [idToDelete, setidToDelete] = useState('')
+	const navigate = useNavigate()
+
 	useEffect(() => {
 		getArticles((noticias) => {
 			setNoticias(noticias);
@@ -58,6 +66,8 @@ const Noticias = () => {
 		setValue('')
 	};
 	const [titulo, setTitulo] = useState('')
+
+
 
 	const handleUpdate = async (id) => {
 		const noticia = await getArticleById(id, "noticias")
@@ -192,7 +202,7 @@ const Noticias = () => {
 					gap={"30px"}
 					height={"auto"}
 					pb={'15px'}
-					width={'95%'}
+					width={'100%'}
 					display={"flex"}
 					justifyContent={"center"}
 
@@ -200,47 +210,101 @@ const Noticias = () => {
 				>
 					{noticias !== undefined ? (
 						<>
-							{noticias.map(({ title, id, spoiler }) => (
-								<Card
-									sx={{ width: "300px", height: "180px" }}
-									elevation={1}
-									key={id}
-								>
-									<CardContent>
-										<Typography variant="h6">{title.slice(0, 15)}</Typography>
-										<Box height={'60px'}
-											overflow={'hidden'}
+							<Table
+								sx={{
+									borderRadius: '5px',
+									width: '90%',
+									bgcolor: 'background.paper'
+								}}
+							>
+								<TableHead>
+									<TableRow>
+										<TableCell
+											sx={{
+												width: '10%'
+											}}
 										>
-											{parse(spoiler.trim().slice(0, 100))}
-										</Box>
+											<b>
+												Titulo
 
-										<CardActions>
-											<Button
-												sx={{ mt: "10px", bgcolor: "var(--primaryColor)" }}
-												variant="contained"
-												onClick={() => handleUpdate(id)}
-											>
-												Editar
-											</Button>
-											<Button
-												sx={{
-													mt: "10px",
-													borderColor: "var(--primaryColor)",
-													color: "var(--primaryColor)",
-												}}
-												variant="outlined"
-												onClick={() => {
-													setidToDelete(id)
-													openModal()
+											</b>
+										</TableCell>
+										<TableCell
 
-												}}
-											>
-												Eliminar
-											</Button>
-										</CardActions>
-									</CardContent>
-								</Card>
-							))}
+										>
+											<b>
+												Spoiler
+
+											</b>
+										</TableCell>
+										<TableCell
+											sx={{
+												width: '15%'
+											}}
+										>
+
+											<b>
+
+												Fecha
+											</b>
+										</TableCell>
+										<TableCell>
+
+											<b>
+												Accion
+
+											</b>
+										</TableCell>
+									</TableRow>
+								</TableHead>
+								<TableBody
+
+								>
+									{noticias.map(({ title, id, spoiler, date }) => (
+										<TableRow key={id}>
+											<TableCell>
+												{title}
+
+											</TableCell>
+											<TableCell>
+												{parse(spoiler.slice(0, 100))}...
+
+											</TableCell>
+											<TableCell>
+												{date}
+											</TableCell>
+
+
+											<TableCell>
+												<Box display={'flex'} gap={'10px'} alignItems={'center'} height={'50px'}>
+													<Button
+														size="small"
+														color="error"
+														sx={{
+															color: "white",
+														}}
+														variant="contained"
+														onClick={() => {
+
+															setidToDelete(id)
+															openModal()
+														}}
+
+													>
+														Eliminar
+													</Button>
+													<Button size="small" variant="outlined" onClick={() => navigate(`/noticias/${id}	`)}>Ver</Button>
+												</Box>
+											</TableCell>
+
+
+
+										</TableRow>
+
+
+									))}
+								</TableBody>
+							</Table>
 						</>
 					) : (
 						<Typography>No hay noticias</Typography>

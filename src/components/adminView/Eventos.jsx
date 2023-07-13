@@ -196,7 +196,7 @@ const Eventos = () => {
 									<TableRow>
 										<TableCell
 											sx={{
-												width: '20%'
+												width: '10%'
 											}}
 										>
 											<b>
@@ -204,9 +204,16 @@ const Eventos = () => {
 
 											</b>
 										</TableCell>
+										<TableCell>
+
+											<b>
+												Spoiler
+
+											</b>
+										</TableCell>
 										<TableCell
 											sx={{
-												width: '30%'
+												width: '15%'
 											}}
 										>
 
@@ -235,15 +242,18 @@ const Eventos = () => {
 											</TableCell>
 
 											<TableCell>
+												{parse(spoiler.slice(0, 100))}...
+											</TableCell>
+											<TableCell>
 												{date}
 											</TableCell>
-
 
 											<TableCell>
 												<Box display={'flex'} gap={'10px'} alignItems={'center'} height={'50px'}>
 													<Button
+														size="small"
+														color="error"
 														sx={{
-															bgcolor: "var(--primaryColor)",
 															color: "white",
 														}}
 														variant="contained"
@@ -256,7 +266,7 @@ const Eventos = () => {
 													>
 														Eliminar
 													</Button>
-													<Button onClick={() => navigate(`/eventos/${id}	`)}>Ver</Button>
+													<Button size="small" variant="outlined" onClick={() => navigate(`/eventos/${id}	`)}>Ver</Button>
 												</Box>
 											</TableCell>
 
