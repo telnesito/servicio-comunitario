@@ -5,11 +5,12 @@ import './Formulario.css'
 import { login } from "./auth"
 import { useState, useContext, useEffect } from 'react'
 import { LoginContext } from "../../hooks/ContextLoginProvider"
-import { Backdrop, Box, Button, CircularProgress, Paper, TextField, Typography } from "@mui/material"
+import { Alert, Backdrop, Box, Button, CircularProgress, Paper, TextField, Typography } from "@mui/material"
 const Formulario = () => {
   const navigate = useNavigate()
   const { uid, setUid } = useContext(LoginContext)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
   const initialCredentials = {
     email: '',
     password: ''
@@ -24,7 +25,8 @@ const Formulario = () => {
 
     try {
       const response = await login(credentials.email, credentials.password)
-
+      setError(response)
+      console.log(response)
       if (response.uid) {
         setUid(true)
         localStorage.setItem('uid', true)
@@ -49,13 +51,14 @@ const Formulario = () => {
       sx={{
         width: '30%',
         minWidth: '300px',
-        height: '50%',
+        height: 'auto',
         minHeight: '350px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        opacity: '0.7'
+        opacity: '0.7',
+        pt: '15px'
 
       }}
 
@@ -104,10 +107,15 @@ const Formulario = () => {
           <Button
 
             variant="contained" size="large" color="primary" type="submit" >
-            {isLoading ? <CircularProgress sx={{
+            {isLoading ? <CircularProgress size={'30px'} sx={{
               color: 'white'
             }} /> : "Ingresar"}
           </Button>
+
+          {error && <Alert severity="error">
+
+            <Typography>{error}</Typography>
+          </Alert>}
 
         </Box>
 
