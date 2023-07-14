@@ -9,6 +9,7 @@ const Login = () => {
 
     <Box
       width={'100vw'}
+      boxSizing={'border-box'}
       height={'100vh'}
       minHeight={'700px'}
 

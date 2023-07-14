@@ -2,9 +2,6 @@ import { Box, Divider, Button, Typography, Menu, MenuItem } from "@mui/material"
 import { MdNewspaper, MdEvent, MdGroups, MdLogin } from "react-icons/md";
 import { getUniqueId } from 'unique-id-generator-javascript'
 import { useNavigate } from "react-router";
-import { logOut } from "../Login/auth";
-import { useContext, useState } from "react";
-import { LoginContext } from "../../hooks/ContextLoginProvider";
 import { BsViewList } from "react-icons/bs";
 const Nav = () => {
   const navigate = useNavigate()
@@ -32,17 +29,7 @@ const Nav = () => {
   ]
 
 
-  const handleLogOut = async () => {
-    try {
-      await logOut()
-      setUid(false)
-      localStorage.removeItem('uid')
-      navigate('/administracion')
 
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
 
   return (

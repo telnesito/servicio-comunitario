@@ -5,10 +5,11 @@ import './Formulario.css'
 import { login } from "./auth"
 import { useState, useContext, useEffect } from 'react'
 import { LoginContext } from "../../hooks/ContextLoginProvider"
-import { Box, Button, Paper, TextField, Typography } from "@mui/material"
+import { Backdrop, Box, Button, CircularProgress, Paper, TextField, Typography } from "@mui/material"
 const Formulario = () => {
   const navigate = useNavigate()
   const { uid, setUid } = useContext(LoginContext)
+  const [isLoading, setIsLoading] = useState(false)
   const initialCredentials = {
     email: '',
     password: ''
@@ -17,7 +18,7 @@ const Formulario = () => {
 
 
   const handleLogin = async (e) => {
-
+    setIsLoading(true)
     e.preventDefault()
 
 
@@ -36,6 +37,7 @@ const Formulario = () => {
     } catch (error) {
       console.log(error)
     }
+    setIsLoading(false)
 
   }
   const handleGetText = (name, value) => {
@@ -46,7 +48,7 @@ const Formulario = () => {
       elevation={4}
       sx={{
         width: '30%',
-        minWidth: '400px',
+        minWidth: '300px',
         height: '50%',
         minHeight: '350px',
         display: 'flex',
@@ -99,11 +101,17 @@ const Formulario = () => {
               cursor: 'pointer'
             }}
           >Recuperar</span></p>
-          <Button variant="contained" size="large" color="primary" type="submit" >Ingresar</Button>
+          <Button
+
+            variant="contained" size="large" color="primary" type="submit" >
+            {isLoading ? <CircularProgress sx={{
+              color: 'white'
+            }} /> : "Ingresar"}
+          </Button>
+
         </Box>
 
       </form>
-
 
 
 
