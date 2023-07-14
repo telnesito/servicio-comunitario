@@ -11,6 +11,7 @@ import {
 	Table,
 	TableBody,
 	TableCell,
+	TableContainer,
 	TableHead,
 	TableRow,
 	Tabs,
@@ -202,7 +203,7 @@ const Noticias = () => {
 					gap={"30px"}
 					height={"auto"}
 					pb={'15px'}
-					width={'100%'}
+					width={'90%'}
 					display={"flex"}
 					justifyContent={"center"}
 
@@ -210,101 +211,100 @@ const Noticias = () => {
 				>
 					{noticias !== undefined ? (
 						<>
-							<Table
-								sx={{
-									borderRadius: '5px',
-									width: '90%',
-									bgcolor: 'background.paper'
-								}}
-							>
-								<TableHead>
-									<TableRow>
-										<TableCell
-											sx={{
-												width: '10%'
-											}}
-										>
-											<b>
-												Titulo
+							<TableContainer component={Paper}>
 
-											</b>
-										</TableCell>
-										<TableCell
-
-										>
-											<b>
-												Spoiler
-
-											</b>
-										</TableCell>
-										<TableCell
-											sx={{
-												width: '15%'
-											}}
-										>
-
-											<b>
-
-												Fecha
-											</b>
-										</TableCell>
-										<TableCell>
-
-											<b>
-												Accion
-
-											</b>
-										</TableCell>
-									</TableRow>
-								</TableHead>
-								<TableBody
+								<Table
 
 								>
-									{noticias.map(({ title, id, spoiler, date }) => (
-										<TableRow key={id}>
-											<TableCell>
-												{title}
+									<TableHead>
+										<TableRow>
+											<TableCell
+												sx={{
+													width: '10%'
+												}}
+											>
+												<b>
+													Titulo
 
+												</b>
+											</TableCell>
+											<TableCell
+
+											>
+												<b>
+													Spoiler
+
+												</b>
+											</TableCell>
+											<TableCell
+												sx={{
+													width: '15%'
+												}}
+											>
+
+												<b>
+
+													Fecha
+												</b>
 											</TableCell>
 											<TableCell>
-												{parse(spoiler.slice(0, 100))}...
 
+												<b>
+													Accion
+
+												</b>
 											</TableCell>
-											<TableCell>
-												{date}
-											</TableCell>
-
-
-											<TableCell>
-												<Box display={'flex'} gap={'10px'} alignItems={'center'} height={'50px'}>
-													<Button
-														size="small"
-														color="error"
-														sx={{
-															color: "white",
-														}}
-														variant="contained"
-														onClick={() => {
-
-															setidToDelete(id)
-															openModal()
-														}}
-
-													>
-														Eliminar
-													</Button>
-													<Button size="small" variant="outlined" onClick={() => navigate(`/noticias/${id}	`)}>Ver</Button>
-												</Box>
-											</TableCell>
-
-
-
 										</TableRow>
+									</TableHead>
+									<TableBody
+
+									>
+										{noticias.map(({ title, id, spoiler, date }) => (
+											<TableRow key={id}>
+												<TableCell>
+													{title}
+
+												</TableCell>
+												<TableCell>
+													{parse(spoiler.slice(0, 100))}...
+
+												</TableCell>
+												<TableCell>
+													{date}
+												</TableCell>
 
 
-									))}
-								</TableBody>
-							</Table>
+												<TableCell>
+													<Box display={'flex'} gap={'10px'} alignItems={'center'} height={'50px'}>
+														<Button
+															size="small"
+															color="error"
+															sx={{
+																color: "white",
+															}}
+															variant="contained"
+															onClick={() => {
+
+																setidToDelete(id)
+																openModal()
+															}}
+
+														>
+															Eliminar
+														</Button>
+														<Button size="small" variant="outlined" onClick={() => navigate(`/noticias/${id}	`)}>Ver</Button>
+													</Box>
+												</TableCell>
+
+
+
+											</TableRow>
+
+
+										))}
+									</TableBody>
+								</Table>
+							</TableContainer>
 						</>
 					) : (
 						<Typography>No hay noticias</Typography>

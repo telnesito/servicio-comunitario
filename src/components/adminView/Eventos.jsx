@@ -1,4 +1,4 @@
-import { Box, Button, Paper, TextField, Typography, Snackbar, Alert, CardContent, Card, CardActions, Tab, Tabs, TableHead, TableRow, TableCell, Table, TableBody } from "@mui/material";
+import { Box, Button, Paper, TextField, Typography, Snackbar, Alert, CardContent, Card, CardActions, Tab, Tabs, TableHead, TableRow, TableCell, Table, TableBody, TableContainer } from "@mui/material";
 import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -175,7 +175,7 @@ const Eventos = () => {
 					flexWrap={'wrap'}
 					gap={"30px"}
 					pb={'15px'}
-					width={'100%'}
+					width={'90%'}
 					maxHeight={'550px'}
 					overflow={'auto'}
 					display={"flex"}
@@ -185,99 +185,98 @@ const Eventos = () => {
 				>
 					{eventos !== undefined ? (
 						<>
-							<Table
-								sx={{
-									borderRadius: '5px',
-									width: '90%',
-									bgcolor: 'background.paper'
-								}}
-							>
-								<TableHead>
-									<TableRow>
-										<TableCell
-											sx={{
-												width: '10%'
-											}}
-										>
-											<b>
-												Titulo
+							<TableContainer component={Paper}>
 
-											</b>
-										</TableCell>
-										<TableCell>
-
-											<b>
-												Spoiler
-
-											</b>
-										</TableCell>
-										<TableCell
-											sx={{
-												width: '15%'
-											}}
-										>
-
-											<b>
-
-												Fecha
-											</b>
-										</TableCell>
-										<TableCell>
-
-											<b>
-												Accion
-
-											</b>
-										</TableCell>
-									</TableRow>
-								</TableHead>
-								<TableBody
+								<Table
 
 								>
-									{eventos.map(({ title, id, spoiler, date }) => (
-										<TableRow key={id}>
-											<TableCell>
-												{title}
+									<TableHead>
+										<TableRow>
+											<TableCell
+												sx={{
+													width: '10%'
+												}}
+											>
+												<b>
+													Titulo
 
+												</b>
 											</TableCell>
-
 											<TableCell>
-												{parse(spoiler.slice(0, 100))}...
+
+												<b>
+													Spoiler
+
+												</b>
+											</TableCell>
+											<TableCell
+												sx={{
+													width: '15%'
+												}}
+											>
+
+												<b>
+
+													Fecha
+												</b>
 											</TableCell>
 											<TableCell>
-												{date}
+
+												<b>
+													Accion
+
+												</b>
 											</TableCell>
-
-											<TableCell>
-												<Box display={'flex'} gap={'10px'} alignItems={'center'} height={'50px'}>
-													<Button
-														size="small"
-														color="error"
-														sx={{
-															color: "white",
-														}}
-														variant="contained"
-														onClick={() => {
-
-															setIdToDelete(id)
-															openModal()
-														}}
-
-													>
-														Eliminar
-													</Button>
-													<Button size="small" variant="outlined" onClick={() => navigate(`/eventos/${id}	`)}>Ver</Button>
-												</Box>
-											</TableCell>
-
-
-
 										</TableRow>
+									</TableHead>
+									<TableBody
+
+									>
+										{eventos.map(({ title, id, spoiler, date }) => (
+											<TableRow key={id}>
+												<TableCell>
+													{title}
+
+												</TableCell>
+
+												<TableCell>
+													{parse(spoiler.slice(0, 100))}...
+												</TableCell>
+												<TableCell>
+													{date}
+												</TableCell>
+
+												<TableCell>
+													<Box display={'flex'} gap={'10px'} alignItems={'center'} height={'50px'}>
+														<Button
+															size="small"
+															color="error"
+															sx={{
+																color: "white",
+															}}
+															variant="contained"
+															onClick={() => {
+
+																setIdToDelete(id)
+																openModal()
+															}}
+
+														>
+															Eliminar
+														</Button>
+														<Button size="small" variant="outlined" onClick={() => navigate(`/eventos/${id}	`)}>Ver</Button>
+													</Box>
+												</TableCell>
 
 
-									))}
-								</TableBody>
-							</Table>
+
+											</TableRow>
+
+
+										))}
+									</TableBody>
+								</Table>
+							</TableContainer>
 						</>
 					) : (
 						<Typography>No hay noticias</Typography>
