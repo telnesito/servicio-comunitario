@@ -1,7 +1,9 @@
 import {
   Alert,
+  Backdrop,
   Box,
   Button,
+  CircularProgress,
   InputAdornment,
   InputLabel,
   MenuItem,
@@ -19,6 +21,8 @@ import { useEffect } from "react";
 const Organigrama = ({ open, closeModal }) => {
   const [selectedFile, setselectedFile] = useState(null);
   const [workers, setWorkers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
+
   const initialState = {
     nombres: "",
     apellidos: "",
@@ -45,6 +49,7 @@ const Organigrama = ({ open, closeModal }) => {
     Aos.init({ duration: 1000 });
   }, []);
   const onSubmit = async (e) => {
+    setIsLoading(true)
     e.preventDefault();
 
     await addWorker(
@@ -58,6 +63,8 @@ const Organigrama = ({ open, closeModal }) => {
     );
 
     setWorkerData(initialState);
+    setIsLoading(false)
+    closeModal()
   };
 
   return (
@@ -203,6 +210,9 @@ const Organigrama = ({ open, closeModal }) => {
             </Button>
           </Box>
         </Box>
+        <Backdrop open={isLoading}>
+          <CircularProgress />
+        </Backdrop>
       </Paper>
     </Modal>
   );
