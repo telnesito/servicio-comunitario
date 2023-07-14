@@ -38,6 +38,7 @@ const PageOrganigrama = () => {
     <Box
       height={'100vh'}
       bgcolor={'var(--primaryColor)'}
+      width={'100vw'}
     >
       <Header />
       <ScrollToTop />
