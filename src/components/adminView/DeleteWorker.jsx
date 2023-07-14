@@ -1,9 +1,10 @@
-import { Box, Modal, Paper, Table, Typography, TextField, Button, InputLabel, Select, MenuItem } from '@mui/material'
+import { Box, Modal, Paper, Table, Typography, TextField, Button, InputLabel, Select, MenuItem, CircularProgress, Backdrop } from '@mui/material'
 import React, { useState } from 'react'
 import { updateWorker } from "../../api/organigramaManage";
 
 const DeleteWorker = ({ onClose, isOpen, user }) => {
   const [selectedFile, setselectedFile] = useState(null);
+  const [isLoading, setIsLoading] = useState(false)
   const initialState = {
     nombres: "",
     apellidos: "",
@@ -27,6 +28,7 @@ const DeleteWorker = ({ onClose, isOpen, user }) => {
   };
 
   const onSubmit = async (e) => {
+    setIsLoading(true)
     e.preventDefault()
     try {
       const response = await updateWorker(
@@ -41,7 +43,9 @@ const DeleteWorker = ({ onClose, isOpen, user }) => {
     }
     setWorkerData(initialState);
     setselectedFile(null)
+    setIsLoading(false)
     onClose()
+
   }
 
   return (
@@ -116,7 +120,6 @@ const DeleteWorker = ({ onClose, isOpen, user }) => {
               type="text"
               size="small"
               sx={{ width: "50%" }}
-              required
               helperText="El apellido esta compuesto de letras de A-Za-z"
               onChange={({ target }) =>
                 handleGetWorkerData(target.value, "apellidos")
@@ -169,8 +172,10 @@ const DeleteWorker = ({ onClose, isOpen, user }) => {
 
 
 
+        <Backdrop open={isLoading}>
+          <CircularProgress />
+        </Backdrop>
       </Paper>
-
     </Modal>
   )
 }
