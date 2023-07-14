@@ -1,7 +1,9 @@
-import { Box, Button, Modal, Paper, Typography } from '@mui/material'
-import React from 'react'
+import { Backdrop, Box, Button, CircularProgress, Modal, Paper, Typography } from '@mui/material'
+import React, { useState } from 'react'
 
 const ConfirmAction = ({ open, onClose, action, target }) => {
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
     <Modal
       open={open}
@@ -40,11 +42,17 @@ const ConfirmAction = ({ open, onClose, action, target }) => {
           gap={'10px'}
         >
           <Button onClick={() => {
-            onClose()
+            setIsLoading(true)
             action()
+            setIsLoading(false)
+            onClose()
           }} variant='contained' color='error'>Confirmar</Button>
           <Button onClick={onClose} variant='outlined' >Cancelar</Button>
         </Box>
+
+        <Backdrop open={isLoading}>
+          <CircularProgress />
+        </Backdrop>
 
       </Paper>
 

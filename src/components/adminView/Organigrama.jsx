@@ -143,7 +143,6 @@ const Organigrama = ({ open, closeModal }) => {
               type="text"
               size="small"
               sx={{ width: "50%" }}
-              required
               helperText="El apellido esta compuesto de letras de A-Za-z"
               onChange={({ target }) =>
                 handleGetWorkerData(target.value, "apellidos")
