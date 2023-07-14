@@ -8,8 +8,6 @@ import {
   updateDoc,
   deleteDoc
 } from "firebase/firestore";
-
-
 export const addWorker = async (workerData, selectedImage, especilidad) => {
 
   try {
@@ -24,14 +22,31 @@ export const addWorker = async (workerData, selectedImage, especilidad) => {
 
 }
 
-export const updateWorker = async (newData, workerId, especilidad) => {
+// export const updateWorker = async (newData, workerId, especilidad) => {
+//   try {
+//     const workerRef = doc(db, especilidad, workerId)
+//     await updateDoc(workerRef, newData)
+//   } catch (error) {
+
+//     console.log(error)
+
+//   }
+// }
+
+export const updateWorker = async (newData, workerId, especilidad, selectedImage) => {
   try {
-    const workerRef = doc(db, especilidad, workerId)
-    await updateDoc(workerRef, newData)
+    const workerRef = doc(db, especilidad, workerId);
+    if (selectedImage) {
+      // Actualizar la imagen
+      const newImageUrl = await uploadWorkerImage(workerId, selectedImage, especilidad);
+      newData.imageUrl = newImageUrl;
+      // Borrar la imagen anterior
+
+    }
+    // Actualizar los datos del trabajador
+    await updateDoc(workerRef, newData);
   } catch (error) {
-
-    console.log(error)
-
+    console.log(error);
   }
 }
 

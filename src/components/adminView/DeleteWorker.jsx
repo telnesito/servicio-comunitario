@@ -1,8 +1,48 @@
-import { Box, Modal, Paper, Table, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Modal, Paper, Table, Typography, TextField, Button, InputLabel, Select, MenuItem } from '@mui/material'
+import React, { useState } from 'react'
+import { updateWorker } from "../../api/organigramaManage";
 
 const DeleteWorker = ({ onClose, isOpen, user }) => {
-  console.log(user)
+  const [selectedFile, setselectedFile] = useState(null);
+  const initialState = {
+    nombres: "",
+    apellidos: "",
+    cargo: "",
+    especilidad: "",
+    img: "",
+  };
+  const [workerData, setWorkerData] = useState(initialState);
+
+  const handleGetWorkerData = (data, field) => {
+    setWorkerData({
+      ...workerData,
+      [field]: data,
+    });
+  };
+
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setselectedFile(file);
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await updateWorker(
+        {
+          nombres: workerData.nombres,
+          apellidos: workerData.apellidos,
+          cargo: workerData.cargo,
+        }, user.id, user.especilidad, selectedFile
+      )
+    } catch (error) {
+      console.log(error)
+    }
+    setWorkerData(initialState);
+    setselectedFile(null)
+    onClose()
+  }
 
   return (
     <Modal
@@ -24,7 +64,7 @@ const DeleteWorker = ({ onClose, isOpen, user }) => {
             xs: "90%",
           },
           height: "auto",
-          minHeight: "520px",
+          minHeight: "420px",
           paddingBottom: "10px",
           display: "flex",
           flexDirection: "column",
@@ -46,11 +86,87 @@ const DeleteWorker = ({ onClose, isOpen, user }) => {
             Rellenar los nuevos campos
           </Typography>
         </Box>
+        <Box
+          display={"flex"}
+          flexDirection={"column"}
+          gap={"10px"}
+          width={"90%"}
+          component={"form"}
+          onSubmit={onSubmit}
+        >
+          <Box display={"flex"} gap={"10px"}>
+            <TextField
+              label={"Nombres"}
+              variant="filled"
+              type="text"
+              size="small"
+              sx={{ width: "50%" }}
+              required
+              helperText="El nombre esta compuesto de letras de A-Za-z"
+              onChange={({ target }) =>
+                handleGetWorkerData(target.value, "nombres")
+              }
+              value={workerData.nombres}
+            />
 
-        <Box>
+            <TextField
 
+              label={"Apellidos"}
+              variant="filled"
+              type="text"
+              size="small"
+              sx={{ width: "50%" }}
+              required
+              helperText="El apellido esta compuesto de letras de A-Za-z"
+              onChange={({ target }) =>
+                handleGetWorkerData(target.value, "apellidos")
+              }
+              value={workerData.apellidos}
+            />
+          </Box>
+
+          <TextField
+            label={"Cargo"}
+            variant="filled"
+            type="text"
+            size="small"
+            sx={{ width: "100%" }}
+            required
+            helperText="El cargo es el rol a ejercier, p.e: Inglés 4to. y 5to. Año "
+            onChange={({ target }) =>
+              handleGetWorkerData(target.value, "cargo")
+            }
+            value={workerData.cargo}
+          />
+
+          <InputLabel label="input-file">Foto del trabajador</InputLabel>
+          <TextField
+            onChange={handleFileChange}
+            variant="standard"
+            helperText="Agregar imagen tamaño carnet con buena iluminacion"
+            required
+            type="file"
+          />
+
+          <Box display={"flex"} gap={"10px"}>
+            <Button
+              type="submit"
+              sx={{ width: "20%", minWidth: "100px" }}
+              variant="contained"
+            >
+              Actualizar
+            </Button>
+            <Button
+              onClick={() => setWorkerData(initialState)}
+              sx={{ width: "25%", minWidth: "150px" }}
+              variant="text"
+            >
+              Limpiar campos
+            </Button>
+          </Box>
 
         </Box>
+
 
 
       </Paper>

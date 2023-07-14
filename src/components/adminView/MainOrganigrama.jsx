@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   IconButton,
   Paper,
   SpeedDial,
@@ -91,6 +92,8 @@ const MainOrganigrama = () => {
         margin={"20px"}
       >
 
+
+
         <Tabs sx={{
           bgcolor: 'background.paper',
           borderRadius: '5px',
@@ -106,6 +109,14 @@ const MainOrganigrama = () => {
           <Tab label="Mantenimiento" />
 
         </Tabs>
+        <Box width={"90%"}
+        >
+          <Button startIcon={<BsPersonFillAdd />}
+            onClick={openModal}
+
+            variant="contained">Agregar trabajador</Button>
+
+        </Box>
         {value === 0 && <TableWorkers especilidad={'Cuerpo directivo'} workers={cuerpoDirectivo} />}
         {value === 1 && <TableWorkers especilidad={'Educacion inicial'} workers={educacionInicial} />}
         {value === 2 && <TableWorkers especilidad={'Educacion primaria'} workers={educacionPrimaria} />}
@@ -117,38 +128,11 @@ const MainOrganigrama = () => {
 
 
       </Box>
-      <SpeedDial
 
-        sx={{
-          position: "fixed",
-          zIndex: "9999",
-          bottom: "20px",
-          right: "5%",
-        }}
-        ariaLabel="Editar trabajadores"
-        icon={<SpeedDialIcon />}
-      >
-        <SpeedDialAction
-          onClick={openModal}
-          icon={<BsPersonFillAdd size={"25px"} color="var(--primaryColor)" />}
-          tooltipTitle={"Agregar trabajador"}
-        ></SpeedDialAction>
-
-        <SpeedDialAction
-          icon={<BsPersonFillGear size={"25px"} color="var(--primaryColor)" />}
-          tooltipTitle={"Actualizar trabajador"}
-        ></SpeedDialAction>
-
-        <SpeedDialAction
-          onClick={openDelete}
-          icon={<BsPersonFillX size={"25px"} color="var(--primaryColor)" />}
-          tooltipTitle={"Eliminar trabajador"}
-        ></SpeedDialAction>
-      </SpeedDial>
 
       <Organigrama open={open} closeModal={closeModal} />
       <DeleteWorker isOpen={isOpenDelete} onClose={closeDelete} />
-    </Box>
+    </Box >
   );
 };
 

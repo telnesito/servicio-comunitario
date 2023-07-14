@@ -14,7 +14,7 @@ import {
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useState } from "react";
-import { addWorker, getWorkers } from "../../api/organigramaManage";
+import { addWorker } from "../../api/organigramaManage";
 import { useEffect } from "react";
 const Organigrama = ({ open, closeModal }) => {
   const [selectedFile, setselectedFile] = useState(null);
@@ -41,7 +41,7 @@ const Organigrama = ({ open, closeModal }) => {
   };
 
   useEffect(() => {
-    getWorkers((workers) => setWorkers(workers), "Cuerpo directivo");
+
     Aos.init({ duration: 1000 });
   }, []);
   const onSubmit = async (e) => {
