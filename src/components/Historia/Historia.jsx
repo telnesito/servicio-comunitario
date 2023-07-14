@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import './Historia.css'
 import { useNavigate } from 'react-router'
 const Historia = () => {
@@ -18,7 +19,16 @@ const Historia = () => {
           </p>
           <p>Hasta el presente, hemos graduado más de veintisiete promociones de bachilleres del Colegio Metropolitano con un alto porcentaje de ubicación en las Universidades Nacionales. Asimismo, tenemos en este momento un número significativo de egresados en el campo de trabajo profesional.</p>
           <p>El sistema educativo de la institución, se ha orientado -desde el principio- a desarrollar en el estudiante el aprendizaje activo; es decir, a no conformarse con la cátedra del profesor, sino que las investigaciones complementarias que el alumno lleva a cabo por su propia iniciativa, forman parte sustancial de todas sus evaluaciones. El ambiente familiar y de compañerismo es otra característica del Colegio. Familiar, no solamente en el ambiente interno sino de apertura total a las familias, a fin de que éstas se sientan cómodas al visitar nuestras instalaciones, relacionarse con los maestros y profesores así como los directivos. De esta manera hemos logrado hasta ahora la anhelada fusión entre familia y escuela, tan encomiada en toda la literatura educativa académica como una de las metas más preciadas de toda institución dedicada a la formación de juventudes.</p>
-          <button onClick={() => navigate('/proyecto-pedagogico')}>PROYECTO PEDAGÓGICO</button>
+          <Button sx={{
+            color: 'white',
+            width: {
+              xl: '200px',
+              lg: '200px',
+              md: '200px',
+              sm: '100%',
+              xs: '100%'
+            }
+          }} variant='contained' color='secondary' onClick={() => navigate('/proyecto-pedagogico')}>PROYECTO PEDAGÓGICO</Button>
         </div>
 
 

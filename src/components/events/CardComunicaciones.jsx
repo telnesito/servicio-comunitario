@@ -12,7 +12,7 @@ const CardComunicaciones = ({ id, title, img, date, Icon }) => {
 		>
 			<img width={"100%"} style={{ borderRadius: '10px' }} height={"75%"} src={img}></img>
 			<span className="c-c-descripcion">
-				<p className="c-c-title">{title}</p>
+				<p className="c-c-title">{title.trim().slice(0, 20)}</p>
 				<div className="c-comunicaciones-divider" />
 
 				<p><Icon />  {" " + date}</p>

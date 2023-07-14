@@ -8,8 +8,14 @@
   height: 250px;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.593);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.593);
   color: var(--primaryColor);
+  transition: all 0.5s;
+}
+
+.c-comunicaciones-card:hover {
+  transform: scale(1.04);
+  transition: all 0.5s;
 }
 
 .c-c-title {

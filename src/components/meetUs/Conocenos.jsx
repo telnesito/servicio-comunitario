@@ -20,9 +20,7 @@ import {
   IconButton,
 } from "@mui/material";
 const Conocenos = () => {
-  useEffect(() => {
-    Aos.init({ duration: 1000 })
-  }, [])
+
   const navigate = useNavigate()
 
   const SERVICES =
@@ -68,7 +66,7 @@ const Conocenos = () => {
       bgcolor={'var(--backgroundColor)'}
       id='conocenos'
     >
-      <Box data-aos="fade-left"
+      <Box
         display={'flex'}
         flexDirection={'column'}
         alignItems={'center'}
@@ -85,8 +83,7 @@ const Conocenos = () => {
           width={'80%'}>El Colegio Metropolitano se creó en el mes de Septiembre del año 1988 y actualmente cuenta con  más de 27 promociones de bachilleres, todos ellos ubicados en estudios superiores o ya en el campo de trabajo.</Typography>
       </Box>
 
-      <Box data-aos="fade-up"
-        data-aos-anchor-placement="center-bottom"
+      <Box
         width={'100%'}
         mt={'30px'}
         height={'auto'}

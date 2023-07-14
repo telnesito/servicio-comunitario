@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import './ProyectoPedagogico.css'
 import { useNavigate } from 'react-router'
 const ProyectoPedagogico = () => {
@@ -24,8 +25,16 @@ const ProyectoPedagogico = () => {
             <li>Buenos niveles de aprendizaje logrados, lo cual se demuestra a través de los índices académicos y aprobación de los exámenes de admisión de las diversas universidades por parte de nuestros estudiantes.</li>
             <li>Más de 27 promociones de bachilleres, todos ellos ubicados en estudios superiores o ya en el campo de trabajo.</li>
           </ul>
-
-          <button className='btn-proyecto' onClick={() => navigate('/historia')}>HISTORIA</button>
+          <Button sx={{
+            color: 'white',
+            width: {
+              xl: '200px',
+              lg: '200px',
+              md: '200px',
+              sm: '100%',
+              xs: '100%'
+            }
+          }} variant='contained' color='secondary' onClick={() => navigate('/historia')}>Historia</Button>
         </div>
       </main>
 

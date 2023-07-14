@@ -37,15 +37,6 @@ h2 {
   margin-top: 20px;
 }
 
-.btn-proyecto {
-  width: 200px;
-  height: 50px;
-  color: white;
-  background-color: #c2a436;
-  border: none;
-  border-radius: 5px;
-}
-
 .c-principal-proyecto {
   display: flex;
   align-items: center;

@@ -3,7 +3,7 @@ import './Foother.css'
 import { IgButton } from './IgButton'
 import {
 
-  Box,
+  Box, Typography,
 
 } from "@mui/material";
 
@@ -28,7 +28,22 @@ const Foother = () => {
       </Box>
       <Box display={'flex'} alignItems={{ md: 'start', lg: 'start', xl: 'start', sm: 'center', xs: 'center' }} flexDirection={'column'} height={'100%'} width={{ lg: '25%', xl: '25%', md: '25%', sm: '100%', xs: '100%' }} >
         <h3>Redes</h3>
-        <p>Siguenos en nuestras redes sociales, encuentranos como Colegio Metropolitano </p>
+        <Typography sx={{
+          textAlign: {
+            xl: 'left',
+            lg: 'left',
+            md: 'left',
+            sm: 'center',
+            xs: 'center'
+          },
+          width: {
+            xl: '100%',
+            lg: '100%',
+            md: '100%',
+            sm: '90%',
+            xs: '90%'
+          }
+        }} >Siguenos en nuestras redes sociales, encuentranos como Colegio Metropolitano </Typography>
         <IgButton />
       </Box>
       <Box display={'flex'} alignItems={{ md: 'start', lg: 'start', xl: 'start', sm: 'center', xs: 'center' }} flexDirection={'column'} height={'100%'} width={{ lg: '25%', xl: '25%', md: '25%', sm: '100%', xs: '100%' }}  >

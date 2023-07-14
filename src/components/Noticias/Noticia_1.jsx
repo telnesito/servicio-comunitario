@@ -1,3 +1,4 @@
+import './noticia.css'
 import { Box, Typography } from "@mui/material";
 import Header from "../header/Header";
 import Foother from "../foother/Foother";
@@ -85,10 +86,10 @@ const Noticia_1 = ({ articleType }) => {
 							alignItems={'center'}
 							width={"100%"} textAlign={"left"}>
 
-							<Typography width={"90%"} variant="h3">
+							<Typography sx={{ wordWrap: 'break-word' }} width={"90%"} variant="h3">
 								{article.title}
 							</Typography>
-							<Box width={"90%"}>
+							<Box className="contentDynamic" width={"90%"} sx={{ wordWrap: 'break-word' }}>
 								{parse(article.spoiler)}
 							</Box>
 						</Box>
@@ -242,7 +243,7 @@ const Noticia_1 = ({ articleType }) => {
 												variant="body1"
 												color={'white'}
 												fontWeight={'700'}
-											>{title}</Typography>
+											>{title.trim().slice(0, 20)}</Typography>
 
 											<Typography
 												ml={'10px'}

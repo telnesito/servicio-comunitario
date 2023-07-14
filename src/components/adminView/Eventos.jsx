@@ -240,7 +240,7 @@ const Eventos = () => {
 												</TableCell>
 
 												<TableCell>
-													{parse(spoiler.slice(0, 100))}...
+													{parse(spoiler.slice(0, 40))}...
 												</TableCell>
 												<TableCell>
 													{date}

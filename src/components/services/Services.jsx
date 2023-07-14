@@ -2,20 +2,21 @@ import './Services.css'
 import { useEffect } from 'react'
 import Aos from 'aos'
 import "aos/dist/aos.css"
+import { Typography } from '@mui/material'
 const Services = () => {
   useEffect(() => {
     Aos.init({ duration: 1000 })
   }, [])
   return (
     <div id='servicios' className='c-service-principal'>
-      <span data-aos="fade-right" className='c-service-title'>
+      <span className='c-service-title'>
         <h3>SERVICIOS</h3>
         <div />
       </span>
+      <Typography width={'75%'} textAlign={'center'} pb={'10px'} variant="h6" color={'black'}>Siempre con nuestro lema: <b>Aprendiendo con Alegria, Disciplina y Eficiencia</b></Typography>
 
-      <p className='service-frase'>Siempre con nuestro lema: <b>Aprendiendo con Alegria, Disciplina y Eficiencia</b></p>
 
-      <div data-aos="fade-up"
+      <div
         data-aos-anchor-placement="center-bottom" className='c-service-all'>
 
         <div className='c-serivice-one'>
