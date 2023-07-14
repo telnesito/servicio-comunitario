@@ -35,7 +35,9 @@ const Noticia_1 = ({ articleType }) => {
 
 
 	return (
-		<Box>
+		<Box
+			width={'100vw'}
+		>
 			<Header />
 			<ScrollToTop />
 			<Box
