@@ -8,7 +8,7 @@
 .c-header {
   /* position: sticky; */
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: 90px;
   z-index: 9999;
   background-color: var(--backgroundColor);

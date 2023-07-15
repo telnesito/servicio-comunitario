@@ -87,7 +87,7 @@ const Noticia_1 = ({ articleType }) => {
 							width={"100%"} textAlign={"left"}>
 
 							<Typography sx={{ wordWrap: 'break-word' }} width={"90%"} variant="h3">
-								{article.title}
+								{article.title.trim()}
 							</Typography>
 							<Box className="contentDynamic" width={"90%"} sx={{ wordWrap: 'break-word' }}>
 								{parse(article.spoiler)}
@@ -142,6 +142,7 @@ const Noticia_1 = ({ articleType }) => {
 						{noticias.map(({ id, title, spoiler, date }) =>
 
 							<Box key={id}
+
 								justifyContent={'center'}
 								display={'flex'}
 								flexDirection={'column'}
@@ -150,6 +151,7 @@ const Noticia_1 = ({ articleType }) => {
 								href={`/noticias/${id}`}
 								component={'a'}
 								sx={{
+									textDecoration: 'none',
 									"&:hover": {
 										textDecoration: 'underline'
 									}
@@ -158,9 +160,12 @@ const Noticia_1 = ({ articleType }) => {
 								<Typography
 									variant="body1"
 									fontWeight={'700'}
-								>{title}</Typography>
+								>{title.trim().slice(0, 20)}</Typography>
 								<Typography
-
+									sx={{
+										overflowWrap: 'break-word'
+									}}
+									className='prob'
 									variant="body2" component={'div'}
 
 								>{parse(spoiler.trim().slice(0, 70))}</Typography>

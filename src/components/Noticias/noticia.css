@@ -1,3 +1,24 @@
 .contentDynamic img {
   width: 100%;
 }
+
+.prob h1,
+.prob h2,
+.prob h3,
+.prob h4,
+.prob h5,
+.prob h6,
+.prob strong,
+.prob i,
+.prob b,
+.prob p {
+  overflow-y: hidden;
+  max-height: 200px;
+  text-align: justify;
+  overflow-wrap: break-word;
+  font-size: 1em; /* Tamaño de fuente similar al de un párrafo */
+  font-weight: normal; /* Peso de fuente normal en lugar de negrita */
+  margin: 0;
+  padding: 0; /* Eliminar el relleno por defecto */
+  display: block; /* Convertir la etiqueta h1 en un elemento de bloque */
+}
