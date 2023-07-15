@@ -235,7 +235,7 @@ const Eventos = () => {
 										{eventos.map(({ title, id, spoiler, date }) => (
 											<TableRow key={id}>
 												<TableCell>
-													{title}
+													{title.slice(0, 15)}
 
 												</TableCell>
 
