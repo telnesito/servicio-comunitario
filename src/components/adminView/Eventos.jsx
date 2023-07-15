@@ -1,4 +1,4 @@
-import { Box, Button, Paper, TextField, Typography, Snackbar, Alert, CardContent, Card, CardActions, Tab, Tabs, TableHead, TableRow, TableCell, Table, TableBody, TableContainer } from "@mui/material";
+import { Box, Button, Paper, TextField, Typography, Snackbar, Alert, CardContent, Card, CardActions, Tab, Tabs, TableHead, TableRow, TableCell, Table, TableBody, TableContainer, Backdrop, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -23,7 +23,7 @@ const Eventos = () => {
 	const [idToDelete, setIdToDelete] = useState('')
 
 	const { closeModal, open: isOpen, openModal } = useModal()
-
+	const [isLoading, setIsLoading] = useState(false)
 	const handleFileChange = (event) => {
 		const file = event.target.files[0];
 		setSelectedFile(file);
@@ -42,8 +42,8 @@ const Eventos = () => {
 	}
 
 	const onSubmit = async (e) => {
+		setIsLoading(true)
 		e.preventDefault()
-		setOpen(true)
 		const error = await createArticle(
 
 			// "Febrero 19, 2023" TODO aquí poner los datos de los input del title, description y date
@@ -62,6 +62,9 @@ const Eventos = () => {
 		if (error) {
 			console.log("error papa");
 		}
+		setIsLoading(false)
+		setOpen(true)
+
 	};
 	const handleTitle = ({ target }) => setTitulo(target.value)
 
@@ -303,9 +306,14 @@ const Eventos = () => {
 			>
 
 				<Alert severity="success">
-					Evento publicado!
+					Evento publicado correctamente!
 				</Alert>
 			</Snackbar>
+
+			<Backdrop open={isLoading}>
+				<CircularProgress />
+
+			</Backdrop>
 		</Box>
 	);
 };

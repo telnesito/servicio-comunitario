@@ -1,12 +1,17 @@
 import {
 
+	Alert,
+	Backdrop,
 	Box,
 	Button,
 	Card,
 	CardActions,
 	CardContent,
 
+	CircularProgress,
+
 	Paper,
+	Snackbar,
 	Tab,
 	Table,
 	TableBody,
@@ -31,10 +36,12 @@ import ConfirmAction from "../ConfirmAction";
 import { useNavigate } from "react-router";
 
 const Noticias = () => {
+	const [isLoading, setIsLoading] = useState(false)
 	const [noticias, setNoticias] = useState([]);
 	const currentDate = new Date();
 	const { closeModal, open, openModal } = useModal()
 	const [idToDelete, setidToDelete] = useState('')
+	const [isOpen, setIsOpen] = useState(false)
 	const navigate = useNavigate()
 
 	useEffect(() => {
@@ -54,6 +61,7 @@ const Noticias = () => {
 	};
 
 	const onSubmit = async (e) => {
+		setIsLoading(true)
 		e.preventDefault()
 		const error = await createArticle(
 			//TODO aquí poner los datos de la noticia
@@ -65,6 +73,9 @@ const Noticias = () => {
 		}
 		setTitulo('')
 		setValue('')
+		setIsLoading(false)
+		setIsOpen(true)
+
 	};
 	const [titulo, setTitulo] = useState('')
 
@@ -318,8 +329,21 @@ const Noticias = () => {
 
 
 
+			<Backdrop open={isLoading}>
+				<CircularProgress />
+			</Backdrop>
 
+			<Snackbar
+				open={isOpen}
+				autoHideDuration={6000}
+				onClose={() => setIsOpen(false)}
 
+			>
+
+				<Alert severity="success">
+					Noticia publicada correctamente!
+				</Alert>
+			</Snackbar>
 		</Box>
 	);
 };

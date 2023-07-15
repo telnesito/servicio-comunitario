@@ -10,6 +10,7 @@ import {
   Modal,
   Paper,
   Select,
+  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
@@ -212,6 +213,8 @@ const Organigrama = ({ open, closeModal }) => {
         <Backdrop open={isLoading}>
           <CircularProgress />
         </Backdrop>
+
+
       </Paper>
     </Modal>
   );
