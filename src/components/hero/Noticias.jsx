@@ -4,28 +4,49 @@ import { Box, Button, Typography } from "@mui/material";
 const Noticias = ({ id, title, prevText, buttonText }) => {
 	const navigate = useNavigate();
 	return (
-		<Box sx={{
-			"display": "flex",
-			"flexDirection": "column",
-			"justifyContent": "center",
-			"width": "100%",
-			"height": "550px",
-			"marginLeft": "50px"
-		}}>
+		<Box
+			className="principalHero"
+			sx={{
+				"display": "flex",
+				"flexDirection": "column",
+				"justifyContent": "center",
+				"width": "100%",
+				"height": "550px",
+				"marginLeft": "50px",
+				gap: '20px'
+			}}>
 			<Box
 				textAlign={'left'}
-				className="hero-info-title">
+
+			>
 				<Typography
-					position={'relative'}
-					bottom={'-20px'}
+					width={'80%'}
+
+					sx={{
+						overflowWrap: 'break-word',
+					}}
 					fontSize={'1.5rem'}
 					fontWeight={'bold'}>COLEGIO METROPOLITANO</Typography>
 				<Typography
+					width={'80%'}
+					sx={{
+						overflowWrap: 'break-word',
+						lineHeight: '1',
+						fontSize: {
+							xl: '3rem',
+							lg: '3rem',
+							md: '3rem',
+							sm: '2rem',
+							xs: '2rem'
+						}
+					}}
 					fontSize={'3rem'} fontWeight={'bold'}
 				>{title}</Typography>
 			</Box>
 
-			<Box textAlign={'justify'} width={'80%'}>{prevText}</Box>
+			<Box className="prob" sx={{
+
+			}} width={'80%'}>{prevText}</Box>
 
 			<Button sx={{
 				width: '200px',
