@@ -201,11 +201,13 @@ const Noticias = () => {
 					alignItems={"center"}
 					flexWrap={'wrap'}
 					gap={"30px"}
-					height={"auto"}
 					pb={'15px'}
 					width={'90%'}
+					maxHeight={'550px'}
+					overflow={'auto'}
 					display={"flex"}
 					justifyContent={"center"}
+
 
 
 				>
@@ -262,11 +264,11 @@ const Noticias = () => {
 										{noticias.map(({ title, id, spoiler, date }) => (
 											<TableRow key={id}>
 												<TableCell>
-													{title}
+													{title.slice(0, 15)}
 
 												</TableCell>
 												<TableCell>
-													{parse(spoiler.slice(0, 100))}...
+													{parse(spoiler.slice(0, 40))}...
 
 												</TableCell>
 												<TableCell>
