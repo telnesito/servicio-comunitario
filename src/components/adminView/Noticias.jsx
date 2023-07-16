@@ -113,7 +113,7 @@ const Noticias = () => {
 			flexDirection={"column"}
 			alignItems={"center"}
 			width={"100%"}
-			height={"auto"}
+			height={"100vh"}
 			minHeight={"750px"}
 			bgcolor={"var(--backgroundColor)"}
 
