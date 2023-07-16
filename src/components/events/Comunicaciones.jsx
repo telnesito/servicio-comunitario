@@ -2,7 +2,8 @@ import CardComunicaciones from "./CardComunicaciones";
 import "./Comunicaciones.css";
 import { BsCalendarDate } from "react-icons/bs";
 import { useState, useEffect } from "react";
-import "aos/dist/aos.css";
+import Aos from 'aos'
+import "aos/dist/aos.css"
 import { getArticles } from "../../api/articleManage";
 import { Box, Typography } from "@mui/material";
 
@@ -13,8 +14,11 @@ const Comunicaciones = () => {
 		getArticles((eventos) => {
 			setEventos(eventos);
 		}, "eventos");
+		Aos.init({ duration: 1000 })
 
 	}, []);
+
+
 
 	return (
 		<Box id="eventos" className="c-comunicaciones-principal">
@@ -33,22 +37,23 @@ const Comunicaciones = () => {
 				"font-size": "1.5rem",
 				flexDirection: 'column'
 			}} >
-				<Typography zIndex={'99999'} fontFamily={'Poppins'} fontWeight={'600'}
+				<Typography data-aos="fade-right" zIndex={'99999'} fontFamily={'Poppins'} fontWeight={'600'}
 					fontSize={'2rem'} > EVENTOS</Typography>
-				<Box width={'145px'} bgcolor={'var(--onActionColor)'} position={'relative'} top={'-18px'} height={'10px'}
+				<Box data-aos="fade-right" width={'145px'} bgcolor={'var(--onActionColor)'} position={'relative'} top={'-18px'} height={'10px'}
 					sx={{
 						borderBottomLeftRadius: '10px',
 						borderBottomRightRadius: '10px',
 
 					}}
 				></Box>
-				<Typography textAlign={'left'} pb={'10px'} color={'black'}>Celebra y conmemora todos los dias festivos y eventos dentro de <strong>nuestras instalaciones!</strong></Typography>
+				<Typography data-aos="fade-right" textAlign={'left'} pb={'10px'} color={'black'}>Celebra y conmemora todos los dias festivos y eventos dentro de <strong>nuestras instalaciones!</strong></Typography>
 			</Box>
 
 			{
 				eventos !== undefined ? (
 					<Box
 						className="c-comunicaciones-cards"
+						data-aos="fade-up"
 
 						sx={{
 							"width": {
@@ -62,6 +67,7 @@ const Comunicaciones = () => {
 					>
 						{eventos.map(({ id, title, img, date }) => (
 							<CardComunicaciones
+
 								key={id}
 								id={id}
 								title={title}

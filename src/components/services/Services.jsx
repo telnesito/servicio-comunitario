@@ -16,7 +16,8 @@ const Services = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}
-      data-aos-anchor-placement="center-bottom" id='servicios' className='c-service-principal'
+
+      id='servicios' className='c-service-principal'
       gap={'15px'}
       width={'100vw'}
       height={'auto'}
@@ -29,6 +30,7 @@ const Services = () => {
       pb={'40px'}
     >
       <Box
+
         display={'flex'}
         flexDirection={'column'}
         width={'75%'}
@@ -46,10 +48,11 @@ const Services = () => {
         alignItems={'left'}
       >
         <Typography zIndex={'9999'} fontWeight={'600'} fontFamily={'Poppins'} fontSize={'2rem'} color={'white'}
-
+          data-aos="fade-right"
 
         >SERVICIOS</Typography>
         <Box width={'170px'} bgcolor={'var(--onActionColor)'} position={'relative'} top={'-18px'} height={'10px'}
+          data-aos="fade-right"
           sx={{
             borderBottomLeftRadius: '10px',
             borderBottomRightRadius: '10px',
@@ -57,12 +60,13 @@ const Services = () => {
           }}
         ></Box>
         <Typography
-
+          data-aos="fade-up"
           pb={'10px'} color={'white'}>Siempre con nuestro lema: <b>Aprendiendo con Alegria, Disciplina y Eficiencia</b></Typography>
       </Box>
 
 
       <Box
+
         sx={{
           "height": "auto",
           "width": "95%",
@@ -111,7 +115,7 @@ const Services = () => {
             <p>EDUCACIÓN INICIAL</p>
           </div>
 
-          <p>
+          <p >
             La educación inicial  comprendida entre los  1 y 6 años es una etapa fundamental en el desarrollo de los niños y niñas, ya que sienta las bases para su educación futura.
           </p>
         </Box>

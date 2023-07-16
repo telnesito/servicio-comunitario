@@ -20,6 +20,11 @@ import {
 } from "@mui/material";
 const Conocenos = () => {
 
+  useEffect(() => {
+    Aos.init({ duration: 1000 })
+  }, [])
+
+
   const navigate = useNavigate()
 
   const SERVICES =
@@ -68,6 +73,7 @@ const Conocenos = () => {
       id='conocenos'
     >
       <Box
+
         display={'flex'}
         flexDirection={'column'}
         alignItems={'center'}
@@ -77,6 +83,7 @@ const Conocenos = () => {
         color={'black'}
       >
         <Typography
+          data-aos="fade-right"
           textAlign={'center'}
           sx={{
             width: {
@@ -95,7 +102,7 @@ const Conocenos = () => {
             }
           }}
           fontSize={'2.5rem'} fontFamily={'Poppins'} paddingTop={'40px'} fontWeight={'700'} color={'var(--primaryColor)'} variant='h1'>U. E Colegio Metropolitano</Typography>
-        <Typography mt={'15px'} textAlign={'center'}
+        <Typography data-aos="fade-up" mt={'15px'} textAlign={'center'}
           sx={{
             width: {
               xl: '80%',
@@ -134,6 +141,7 @@ const Conocenos = () => {
         {SERVICES.map(({ id, title, image, button, to }) => {
           return (
             <Box
+              data-aos="fade-up"
               sx={{
                 width: {
                   xl: '250px',
