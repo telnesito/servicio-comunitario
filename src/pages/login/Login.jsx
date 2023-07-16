@@ -12,7 +12,7 @@ const Login = () => {
       boxSizing={'border-box'}
       height={'100vh'}
       minHeight={'700px'}
-
+      minWidth={'280px'}
       display={'flex'}
       gap={'10px'}
       justifyContent={'center'}

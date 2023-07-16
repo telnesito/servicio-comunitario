@@ -49,8 +49,14 @@ const Formulario = () => {
     <Paper
       elevation={4}
       sx={{
-        width: '30%',
-        minWidth: '300px',
+        width: {
+          xl: '30%',
+          lg: '30%',
+          md: '40%',
+          sm: '60%',
+          xs: '90%'
+        },
+        minWidth: '200px',
         height: 'auto',
         minHeight: '350px',
         display: 'flex',
