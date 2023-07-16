@@ -4,7 +4,7 @@ import { BsCalendarDate } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import "aos/dist/aos.css";
 import { getArticles } from "../../api/articleManage";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Comunicaciones = () => {
 	const [eventos, setEventos] = useState([]);
@@ -17,15 +17,35 @@ const Comunicaciones = () => {
 	}, []);
 
 	return (
-		<div id="eventos" className="c-comunicaciones-principal">
-			<span className="c-comunicaciones-title">
-				<div />
-				<h3 >EVENTOS 2023-24</h3>
-			</span>
-			<Typography width={'75%'} textAlign={'center'} pb={'10px'} variant="h6" color={'black'}>Celebra y conmemora todos los dias festivos y eventos dentro de <strong>nuestras instalaciones!</strong></Typography>
+		<Box id="eventos" className="c-comunicaciones-principal">
+			<Box sx={{
+				width: {
+					xl: '75%',
+					lg: '75%',
+					md: '75%',
+					sm: '75%',
+					xs: '90%'
+				},
+				"display": "flex",
+				"align-items": "left",
+				"justify-content": "center",
+				"color": "var(--primaryColor)",
+				"font-size": "1.5rem",
+				flexDirection: 'column'
+			}} >
+				<Typography zIndex={'99999'} fontFamily={'Poppins'} fontWeight={'600'} fontSize={'2rem'}>CELEBRACIONES</Typography>
+				<Box width={'260px'} bgcolor={'var(--onActionColor)'} position={'relative'} top={'-18px'} height={'10px'}
+					sx={{
+						borderBottomLeftRadius: '10px',
+						borderBottomRightRadius: '10px',
+
+					}}
+				></Box>
+				<Typography textAlign={'left'} pb={'10px'} color={'black'}>Celebra y conmemora todos los dias festivos y eventos dentro de <strong>nuestras instalaciones!</strong></Typography>
+			</Box>
 
 			{eventos !== undefined ? (
-				<div
+				<Box
 					className="c-comunicaciones-cards"
 				>
 					{eventos.map(({ id, title, img, date }) => (
@@ -38,11 +58,11 @@ const Comunicaciones = () => {
 							Icon={BsCalendarDate}
 						/>
 					))}
-				</div>
+				</Box>
 			) : (
 				<Typography>No hay eventos</Typography>
 			)}
-		</div>
+		</Box>
 	);
 };
 
