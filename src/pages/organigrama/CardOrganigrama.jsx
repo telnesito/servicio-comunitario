@@ -6,7 +6,13 @@ const CardOrganigrama = ({ workers }) => {
 
     display: 'flex',
     width: '98%',
-    flexDirection: 'row',
+    flexDirection: {
+      xl: 'row',
+      lg: 'row',
+      md: 'row',
+      sm: 'row',
+      xs: 'column-reverse'
+    },
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -17,7 +23,13 @@ const CardOrganigrama = ({ workers }) => {
 
     display: 'flex',
     width: '98%',
-    flexDirection: 'row-reverse',
+    flexDirection: {
+      xl: 'row-reverse',
+      lg: 'row-reverse',
+      md: 'row-reverse',
+      sm: 'row-reverse',
+      xs: 'column-reverse'
+    },
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -30,8 +42,21 @@ const CardOrganigrama = ({ workers }) => {
     width: '80%',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'end',
-    color: 'black'
+    color: 'black',
+    alignItems: {
+      xl: 'end',
+      lg: 'end',
+      md: 'end',
+      sm: 'end',
+      xs: 'center'
+    },
+    textAlign: {
+      xl: '',
+      lg: '',
+      md: '',
+      sm: '',
+      xs: 'center'
+    }
 
   }
   const textLeft = {
@@ -39,13 +64,21 @@ const CardOrganigrama = ({ workers }) => {
     width: '80%',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'initial',
-    color: 'black'
+    color: 'black',
+    alignItems: {
+      xl: 'initial',
+      lg: 'initial',
+      md: 'initial',
+      sm: 'initial',
+      xs: 'center'
+    },
+
   }
 
   return (
     <Box
       height={'auto'}
+
       padding={'20px'}
       bgcolor={'var(--backgroundColor)'}
       display={'flex'}
@@ -63,24 +96,49 @@ const CardOrganigrama = ({ workers }) => {
             borderBottom={'3px solid var(--primaryColor)'}
             borderRight={'5px solid var(--primaryColor)'}
             borderRadius={'8px'}
-            width={'35%'}
-            minWidth={'400px'}
+            display={'flex'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            minWidth={'200px'}
             bgcolor={'white'}
-            height={'80px'}
+            height={'auto'}
+
+            minHeight={'80px'}
             sx={{
               '&:hover': {
                 backgroundColor: 'rgba(194, 164, 54, 0.6)',
                 transition: 'all .5s',
                 cursor: 'pointer'
+              },
+              width: {
+                xl: '35%',
+                lg: '35%',
+                md: '35%',
+                sm: '90%',
+                xs: '90%'
+              },
+              pt: {
+                xl: '0',
+                lg: '0',
+                md: '0',
+                sm: '0',
+                xs: '10px'
+              },
+              pb: {
+                xl: '0',
+                lg: '0',
+                md: '0',
+                sm: '0',
+                xs: '10px'
               }
+
             }}
           >
             <Box
-              sx={index % 2 === 0 ? boxRight : boxLeft}
-            >
+
+              sx={index % 2 === 0 ? boxRight : boxLeft}>
               <Box
-                sx={index % 2 === 0 ? textRight : textLeft}
-              >
+                sx={index % 2 === 0 ? textRight : textLeft}>
 
                 <Typography fontWeight={700}>{cargo}</Typography>
                 <Typography>{nombres + " " + apellidos}</Typography>
