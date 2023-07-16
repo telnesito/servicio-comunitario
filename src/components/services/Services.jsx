@@ -164,7 +164,7 @@ const Services = () => {
 
 
 
-    </Box >
+    </Box>
   )
 }
 

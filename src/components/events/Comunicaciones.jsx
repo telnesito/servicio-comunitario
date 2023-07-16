@@ -53,7 +53,6 @@ const Comunicaciones = () => {
 				eventos !== undefined ? (
 					<Box
 						className="c-comunicaciones-cards"
-						data-aos="fade-up"
 
 						sx={{
 							"width": {

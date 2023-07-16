@@ -1,11 +1,21 @@
 import { Box } from "@mui/material";
 import "./CardComunicaciones.css";
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import "aos/dist/aos.css"
+
+import Aos from "aos";
 const CardComunicaciones = ({ id, title, img, date, Icon }) => {
 	const navigate = useNavigate();
+	useEffect(() => {
 
+		Aos.init({ duration: 1000 })
+
+	}, []);
 	return (
 		<Box
+			data-aos="fade-up"
+
 			onClick={() => {
 				navigate(`/eventos/${id}`);
 			}}
@@ -31,7 +41,17 @@ const CardComunicaciones = ({ id, title, img, date, Icon }) => {
 				"transition": "all 0.5s"
 			}}
 		>
-			<img width={'100%'} style={{ borderRadius: '10px' }} height={"75%"} src={img}></img>
+			<Box
+				sx={{
+					width: '100%',
+					height: '100%',
+					backgroundImage: `url(${img})`,
+					backgroundSize: 'cover',
+					backgroundPosition: 'center',
+					backgroundRepeat: 'no-repeat',
+					cursor: 'pointer'
+				}}
+			></Box>
 			<span className="c-c-descripcion">
 				<p className="c-c-title">{title.trim().slice(0, 20)}</p>
 				<div className="c-comunicaciones-divider" />
