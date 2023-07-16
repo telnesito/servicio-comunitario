@@ -108,7 +108,16 @@ const Conocenos = () => {
       </Box>
 
       <Box
-        width={'100%'}
+        sx={{
+          width: {
+            xl: '90%',
+            lg: '90%',
+            md: '90%',
+            sm: '80%',
+            xs: '100%'
+
+          }
+        }}
         flexWrap={'wrap'}
         height={'auto'}
         display={'flex'}
@@ -118,17 +127,9 @@ const Conocenos = () => {
         color={'var(--primaryColor)'}
         textAlign={'center'}
         fontWeight={'600'}
-        pt={'20px'}
-        pb={'20px'}
-        sx={{
-          flexDirection: {
-            xl: 'row',
-            lg: 'row',
-            md: 'row',
-            sm: 'row',
-            xs: 'row'
-          }
-        }}
+        pt={'40px'}
+        pb={'40px'}
+
         className='c-conocenos-services'>
         {SERVICES.map(({ id, title, image, button, to }) => {
           return (
@@ -136,9 +137,9 @@ const Conocenos = () => {
               sx={{
                 width: {
                   xl: '250px',
-                  lg: '250px',
-                  md: '250px',
-                  sm: '250px',
+                  lg: '220px',
+                  md: '220px',
+                  sm: '220px',
                   xs: '220px'
 
                 }
