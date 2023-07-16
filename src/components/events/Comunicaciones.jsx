@@ -33,8 +33,9 @@ const Comunicaciones = () => {
 				"font-size": "1.5rem",
 				flexDirection: 'column'
 			}} >
-				<Typography zIndex={'99999'} fontFamily={'Poppins'} fontWeight={'600'} fontSize={'2rem'}>CELEBRACIONES</Typography>
-				<Box width={'260px'} bgcolor={'var(--onActionColor)'} position={'relative'} top={'-18px'} height={'10px'}
+				<Typography zIndex={'99999'} fontFamily={'Poppins'} fontWeight={'600'}
+					fontSize={'2rem'} > EVENTOS</Typography>
+				<Box width={'145px'} bgcolor={'var(--onActionColor)'} position={'relative'} top={'-18px'} height={'10px'}
 					sx={{
 						borderBottomLeftRadius: '10px',
 						borderBottomRightRadius: '10px',
@@ -44,25 +45,27 @@ const Comunicaciones = () => {
 				<Typography textAlign={'left'} pb={'10px'} color={'black'}>Celebra y conmemora todos los dias festivos y eventos dentro de <strong>nuestras instalaciones!</strong></Typography>
 			</Box>
 
-			{eventos !== undefined ? (
-				<Box
-					className="c-comunicaciones-cards"
-				>
-					{eventos.map(({ id, title, img, date }) => (
-						<CardComunicaciones
-							key={id}
-							id={id}
-							title={title}
-							img={img}
-							date={date}
-							Icon={BsCalendarDate}
-						/>
-					))}
-				</Box>
-			) : (
-				<Typography>No hay eventos</Typography>
-			)}
-		</Box>
+			{
+				eventos !== undefined ? (
+					<Box
+						className="c-comunicaciones-cards"
+					>
+						{eventos.map(({ id, title, img, date }) => (
+							<CardComunicaciones
+								key={id}
+								id={id}
+								title={title}
+								img={img}
+								date={date}
+								Icon={BsCalendarDate}
+							/>
+						))}
+					</Box>
+				) : (
+					<Typography>No hay eventos</Typography>
+				)
+			}
+		</Box >
 	);
 };
 
