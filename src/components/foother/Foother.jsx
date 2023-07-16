@@ -10,7 +10,7 @@ import {
 const Foother = () => {
 
   return (
-    <Box id='foother' height={{ sm: '1050px', xs: '1080px', lg: '350px', md: '350px' }} alignContent={'center'} justifyContent={'center'} gap={'20px'} flexDirection={{ xs: 'column', sm: 'column', lg: 'row', md: 'row' }} display={'flex'} width={'100%'} className='c-footer-principal' bgcolor={'var(--primaryColor)'}>
+    <Box id='foother' pt={'40px'} pb={'40px'} height={'auto'} alignContent={'center'} justifyContent={'center'} gap={'20px'} flexDirection={{ xs: 'column', sm: 'column', lg: 'row', md: 'row' }} display={'flex'} width={'100%'} className='c-footer-principal' bgcolor={'var(--primaryColor)'}>
 
       <Box width={{ lg: '25%', xl: '25%', md: '25%', sm: '100%', xs: '100%' }} display={'flex'} alignItems={'center'} flexDirection={'column'} height={'100%'} textAlign={'center'}>
         <h3>Metropolitano</h3>

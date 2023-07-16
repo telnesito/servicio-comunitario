@@ -49,6 +49,16 @@ const Comunicaciones = () => {
 				eventos !== undefined ? (
 					<Box
 						className="c-comunicaciones-cards"
+
+						sx={{
+							"width": {
+								xl: '80%',
+								lg: '80%',
+								md: '80%',
+								sm: '80%',
+								xs: '100%'
+							},
+						}}
 					>
 						{eventos.map(({ id, title, img, date }) => (
 							<CardComunicaciones

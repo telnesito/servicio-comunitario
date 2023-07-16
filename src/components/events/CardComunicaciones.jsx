@@ -16,8 +16,13 @@ const CardComunicaciones = ({ id, title, img, date, Icon }) => {
 				"flex-direction": "column",
 				"align-items": "center",
 				"justify-content": "center",
-				"width": "25%",
-				"min-width": "250px",
+				"width": {
+					xl: '30%',
+					lg: '30%',
+					md: '30%',
+					sm: '45%',
+					xs: '90%'
+				},
 				"height": "250px",
 				"background-color": "rgb(255, 255, 255)",
 				"border-radius": "10px",
@@ -26,7 +31,7 @@ const CardComunicaciones = ({ id, title, img, date, Icon }) => {
 				"transition": "all 0.5s"
 			}}
 		>
-			<img width={"100%"} style={{ borderRadius: '10px' }} height={"75%"} src={img}></img>
+			<img width={'100%'} style={{ borderRadius: '10px' }} height={"75%"} src={img}></img>
 			<span className="c-c-descripcion">
 				<p className="c-c-title">{title.trim().slice(0, 20)}</p>
 				<div className="c-comunicaciones-divider" />
