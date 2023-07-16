@@ -20,13 +20,3 @@
   margin-left: 180px;
   margin-right: 180px;
 }
-
-.c-conocenos-services button {
-  margin-top: 20px;
-  height: 40px;
-  width: 200px;
-  background-color: var(--onActionColor);
-  border: 0;
-  border-radius: 6px;
-  box-shadow: 5px 5px 10px var(--boxShadowColor);
-}

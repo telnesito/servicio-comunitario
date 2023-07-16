@@ -16,7 +16,6 @@ import {
   TextField,
   Typography,
   Drawer,
-  Divider,
   IconButton,
 } from "@mui/material";
 const Conocenos = () => {
@@ -29,14 +28,14 @@ const Conocenos = () => {
         id: getUniqueId(),
         image: '/img/proyectoPedagogico.png',
         title: 'PROYECTO PEDAGOGICO',
-        button: 'Ver mas',
+        button: 'Ver más',
         to: '/proyecto-pedagogico/'
       },
       {
         id: getUniqueId(),
         image: '/img/cuerpoDirectivo.png',
         title: 'CUERPO DIRECTIVO',
-        button: 'Ver mas',
+        button: 'Ver más',
         to: '/cuerpo-directivo/'
 
       },
@@ -44,14 +43,14 @@ const Conocenos = () => {
         id: getUniqueId(),
         image: '/img/history.png',
         title: 'HISTORIA',
-        button: 'Ver mas',
+        button: 'Ver más',
         to: '/historia/'
       },
       {
         id: getUniqueId(),
         image: '/img/Instalaciones.png',
         title: 'INSTALACIONES',
-        button: 'Ver mas',
+        button: 'Ver más',
         to: '/instalaciones/'
       }
     ]
@@ -63,6 +62,8 @@ const Conocenos = () => {
       alignItems={'center'}
       width={'100vw'}
       height={'auto'}
+
+
       bgcolor={'var(--backgroundColor)'}
       id='conocenos'
     >
@@ -77,39 +78,87 @@ const Conocenos = () => {
       >
         <Typography
           textAlign={'center'}
-          width={'80%'}
-          fontSize={'2.5rem'} paddingTop={'40px'} fontWeight={'700'} color={'var(--primaryColor)'} variant='h1'>U. E Colegio Metropolitano</Typography>
+          sx={{
+            width: {
+              xl: '80%',
+              lg: '80%',
+              md: '80%',
+              sm: '90%',
+              xs: '90%'
+            },
+            fontSize: {
+              xl: '2.5rem',
+              lg: '2.5rem',
+              md: '2.5rem',
+              sm: '2rem',
+              xs: '2rem'
+            }
+          }}
+          fontSize={'2.5rem'} fontFamily={'Poppins'} paddingTop={'40px'} fontWeight={'700'} color={'var(--primaryColor)'} variant='h1'>U. E Colegio Metropolitano</Typography>
         <Typography mt={'15px'} textAlign={'center'}
-          width={'80%'}>El Colegio Metropolitano se creó en el mes de Septiembre del año 1988 y actualmente cuenta con  más de 27 promociones de bachilleres, todos ellos ubicados en estudios superiores o ya en el campo de trabajo.</Typography>
+          sx={{
+            width: {
+              xl: '80%',
+              lg: '80%',
+              md: '80%',
+              sm: '90%',
+              xs: '90%'
+            }
+          }}>El Colegio Metropolitano se creó en el mes de Septiembre del año 1988 y actualmente cuenta con  más de 27 promociones de bachilleres, todos ellos ubicados en estudios superiores o ya en el campo de trabajo.</Typography>
       </Box>
 
       <Box
         width={'100%'}
-        mt={'30px'}
+        flexWrap={'wrap'}
         height={'auto'}
         display={'flex'}
-        flexWrap={'wrap'}
         alignContent={'center'}
         justifyContent={'center'}
         gap={'50px'}
         color={'var(--primaryColor)'}
         textAlign={'center'}
         fontWeight={'600'}
+        pt={'20px'}
+        pb={'20px'}
+        sx={{
+          flexDirection: {
+            xl: 'row',
+            lg: 'row',
+            md: 'row',
+            sm: 'row',
+            xs: 'row'
+          }
+        }}
         className='c-conocenos-services'>
         {SERVICES.map(({ id, title, image, button, to }) => {
           return (
-            <div key={id}>
-              <img src={image} />
-              <p>{title}</p>
-              <Button sx={{
-                color: 'white'
-              }} variant='contained' color='secondary' onClick={() => navigate(to)}>{button}</Button>
-            </div>
+            <Box
+              sx={{
+                width: {
+                  xl: '250px',
+                  lg: '250px',
+                  md: '250px',
+                  sm: '250px',
+                  xs: '220px'
+
+                }
+              }}
+              key={id}>
+              <img height={'90px'} src={image} />
+              <Typography fontWeight={'700'}>{title}</Typography>
+              <Button
+                sx={{
+                  color: 'white',
+                  mt: '20px',
+                  width: '200px',
+                  backgroundColor: "var(--onActionColor)",
+                }} variant='contained' color='secondary' onClick={() => navigate(to)}>{button}</Button>
+            </Box>
           );
         })}
       </Box>
 
-    </Box>
+    </Box >
   )
 }
 
