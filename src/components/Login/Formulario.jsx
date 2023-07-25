@@ -5,22 +5,27 @@ import "./Formulario.css";
 import { login } from "./auth";
 import { useState, useContext, useEffect } from "react";
 import { LoginContext } from "../../hooks/ContextLoginProvider";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import {
   Alert,
   Backdrop,
   Box,
   Button,
   CircularProgress,
+  Modal,
   Paper,
   TextField,
   Typography,
 } from "@mui/material";
 import { UserContext } from "../../hooks/ContextUserProvider";
+import { auth } from "../../api/config";
 const Formulario = () => {
   const navigate = useNavigate();
+  const [recovery, setRecovery] = useState(false);
   const { uid, setUid } = useContext(LoginContext);
   const { userInfo, setUserInfo } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
+  const [recoveryPassword, setRecoveryPassword] = useState("");
   const [error, setError] = useState("");
   const initialCredentials = {
     email: "",
@@ -50,6 +55,14 @@ const Formulario = () => {
   };
   const handleGetText = (name, value) => {
     setCredentials({ ...credentials, [name]: value });
+  };
+  const onSubmit = () => {
+    try {
+      sendPasswordResetEmail(auth, recoveryPassword);
+      setRecovery(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Paper
@@ -124,6 +137,9 @@ const Formulario = () => {
           <p className="txt-abajo">
             Contraseña olvidada?{" "}
             <span
+              onClick={() => {
+                setRecovery(true);
+              }}
               style={{
                 textDecoration: "underline",
                 fontWeight: "700",
@@ -157,6 +173,65 @@ const Formulario = () => {
             </Alert>
           )}
         </Box>
+        <Modal
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          open={recovery}
+          onClose={() => setRecovery(false)}
+        >
+          <Box
+            display={"flex"}
+            flexDirection={"column"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            sx={{
+              width: {
+                xl: "40%",
+                lg: "40%",
+                md: "40%",
+                sm: "80%",
+                xs: "80%",
+              },
+            }}
+            bgcolor={"white"}
+            height={"200px"}
+          >
+            <Box
+              gap={"10px"}
+              flexDirection={"column"}
+              justifyContent={"center"}
+              alignItems={"center"}
+              display={"flex"}
+              width={"80%"}
+              onSubmit={onSubmit}
+              component={"form"}
+            >
+              <Typography
+                color={"black"}
+                fontFamily={"Poppins"}
+                fontSize={"20px"}
+              >
+                Ingresar correo electronico de recuperación
+              </Typography>
+              <TextField
+                required
+                fullWidth
+                variant="standard"
+                placeholder="Ingresar correo electronico"
+                value={recoveryPassword}
+                onChange={({ target }) => {
+                  setRecoveryPassword(target.value);
+                }}
+              ></TextField>
+              <Button type="submit" fullWidth variant="contained">
+                Enviar
+              </Button>
+            </Box>
+          </Box>
+        </Modal>
       </form>
     </Paper>
   );
