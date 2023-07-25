@@ -1,136 +1,165 @@
-import { useNavigate } from "react-router"
-import { IgButton } from "../foother/IgButton"
-import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai'
-import './Formulario.css'
-import { login } from "./auth"
-import { useState, useContext, useEffect } from 'react'
-import { LoginContext } from "../../hooks/ContextLoginProvider"
-import { Alert, Backdrop, Box, Button, CircularProgress, Paper, TextField, Typography } from "@mui/material"
+import { useNavigate } from "react-router";
+import { IgButton } from "../foother/IgButton";
+import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
+import "./Formulario.css";
+import { login } from "./auth";
+import { useState, useContext, useEffect } from "react";
+import { LoginContext } from "../../hooks/ContextLoginProvider";
+import {
+  Alert,
+  Backdrop,
+  Box,
+  Button,
+  CircularProgress,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { UserContext } from "../../hooks/ContextUserProvider";
 const Formulario = () => {
-  const navigate = useNavigate()
-  const { uid, setUid } = useContext(LoginContext)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState("")
+  const navigate = useNavigate();
+  const { uid, setUid } = useContext(LoginContext);
+  const { userInfo, setUserInfo } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const initialCredentials = {
-    email: '',
-    password: ''
-  }
-  const [credentials, setCredentials] = useState(initialCredentials)
-
+    email: "",
+    password: "",
+  };
+  const [credentials, setCredentials] = useState(initialCredentials);
 
   const handleLogin = async (e) => {
-    setIsLoading(true)
-    e.preventDefault()
-
+    setIsLoading(true);
+    e.preventDefault();
 
     try {
-      const response = await login(credentials.email, credentials.password)
-      setError(response)
-      console.log(response)
+      const response = await login(credentials.email, credentials.password);
+      setError(response);
+      console.log(response);
       if (response.uid) {
-        setUid(true)
-        localStorage.setItem('uid', true)
-        console.log(uid)
-        navigate('/administracion/main/noticias')
-
+        setUid(true);
+        setUserInfo(response);
+        localStorage.setItem("uid", true);
+        console.log(uid);
+        navigate("/administracion/main/noticias");
       }
-
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    setIsLoading(false)
-
-  }
+    setIsLoading(false);
+  };
   const handleGetText = (name, value) => {
-    setCredentials({ ...credentials, [name]: value })
-  }
+    setCredentials({ ...credentials, [name]: value });
+  };
   return (
     <Paper
       elevation={4}
       sx={{
         width: {
-          xl: '30%',
-          lg: '30%',
-          md: '40%',
-          sm: '60%',
-          xs: '90%'
+          xl: "30%",
+          lg: "30%",
+          md: "40%",
+          sm: "60%",
+          xs: "90%",
         },
-        minWidth: '200px',
-        height: 'auto',
-        minHeight: '350px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        opacity: '0.7',
-        pt: '15px'
-
+        minWidth: "200px",
+        height: "auto",
+        minHeight: "350px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        opacity: "0.7",
+        pt: "15px",
       }}
-
-
     >
       <Box
-        width={'90%'}
-        height={'80px'}
-        display={'flex'}
-        flexDirection={'column'}
-        gap={'10px'}
-
+        width={"90%"}
+        height={"80px"}
+        display={"flex"}
+        flexDirection={"column"}
+        gap={"10px"}
       >
         <Typography variant="h5">Iniciar sesion</Typography>
-        <Typography variant="body2">Accede a tu cuenta para continuar</Typography>
+        <Typography variant="body2">
+          Accede a tu cuenta para continuar
+        </Typography>
       </Box>
 
       <form
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
-          gap: '10px',
-          marginBottom: '20px',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          gap: "10px",
+          marginBottom: "20px",
         }}
-
-        onSubmit={handleLogin} >
+        onSubmit={handleLogin}
+      >
         <Box
-          display={'flex'}
-          flexDirection={'column'}
-          gap={'10px'}
-          width={'90%'}
+          display={"flex"}
+          flexDirection={"column"}
+          gap={"10px"}
+          width={"90%"}
         >
-          <TextField label={'Email'} variant="filled" required placeholder="Ingrese email" onChange={({ target }) => handleGetText('email', target.value)} type="email"></TextField>
-          <TextField label={'Contraseña'} variant="filled" required placeholder="Ingrese contraseña" onChange={({ target }) => handleGetText('password', target.value)} type="password"></TextField>
+          <TextField
+            label={"Email"}
+            variant="filled"
+            required
+            placeholder="Ingrese email"
+            onChange={({ target }) => handleGetText("email", target.value)}
+            type="email"
+          ></TextField>
+          <TextField
+            label={"Contraseña"}
+            variant="filled"
+            required
+            placeholder="Ingrese contraseña"
+            onChange={({ target }) => handleGetText("password", target.value)}
+            type="password"
+          ></TextField>
 
-          <p className="txt-abajo">Contraseña olvidada? <span
-            style={{
-              textDecoration: 'underline',
-              fontWeight: '700',
-              cursor: 'pointer'
-            }}
-          >Recuperar</span></p>
+          <p className="txt-abajo">
+            Contraseña olvidada?{" "}
+            <span
+              style={{
+                textDecoration: "underline",
+                fontWeight: "700",
+                cursor: "pointer",
+              }}
+            >
+              Recuperar
+            </span>
+          </p>
           <Button
-
-            variant="contained" size="large" color="primary" type="submit" >
-            {isLoading ? <CircularProgress size={'30px'} sx={{
-              color: 'white'
-            }} /> : "Ingresar"}
+            variant="contained"
+            size="large"
+            color="primary"
+            type="submit"
+          >
+            {isLoading ? (
+              <CircularProgress
+                size={"30px"}
+                sx={{
+                  color: "white",
+                }}
+              />
+            ) : (
+              "Ingresar"
+            )}
           </Button>
 
-          {error && <Alert severity="error">
-
-            <Typography>{error}</Typography>
-          </Alert>}
-
+          {error && (
+            <Alert severity="error">
+              <Typography>{error}</Typography>
+            </Alert>
+          )}
         </Box>
-
       </form>
-
-
-
     </Paper>
-  )
-}
+  );
+};
 
-export default Formulario
+export default Formulario;

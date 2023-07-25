@@ -8,10 +8,12 @@ import { logOut } from "../Login/auth";
 import { LoginContext } from "../../hooks/ContextLoginProvider";
 import { Navigate } from "react-router";
 import { useNavigate } from "react-router";
-
-const MenuProfile = ({ open, handleClose, anchorEl }) => {
+import { useContext, useState } from "react";
+const MenuProfile = ({ open, handleClose, anchorEl, email }) => {
   const { uid, setUid } = React.useContext(LoginContext);
+
   const navigate = useNavigate();
+
   const handleLogOut = async () => {
     try {
       await logOut();
@@ -26,6 +28,7 @@ const MenuProfile = ({ open, handleClose, anchorEl }) => {
     navigate("/administracion/main/perfil");
     handleClose();
   };
+
   return (
     <Menu
       id="basic-menu"
@@ -46,7 +49,7 @@ const MenuProfile = ({ open, handleClose, anchorEl }) => {
           onClick={handleClose}
         >
           <BsPersonFillCheck size={"25px"} />
-          metropolitano@gmail.com
+          {email}
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleProfile}>Gestion de perfiles</MenuItem>
