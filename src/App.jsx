@@ -16,6 +16,7 @@ import { ContextLoginProvider } from "./hooks/ContextLoginProvider";
 import Noticia_1 from "./components/Noticias/Noticia_1";
 import Theme from "./styles/Theme";
 import MainOrganigrama from "./components/adminView/MainOrganigrama";
+import GestionPerfil from "./components/adminView/GestionPerfil";
 
 function App() {
   return (
@@ -55,6 +56,8 @@ function App() {
               }
             >
               <Route path="noticias" element={<Noticias />}></Route>
+              <Route path="perfil" element={<GestionPerfil />}></Route>
+
               <Route path="eventos" element={<Eventos />}></Route>
               <Route path="organigrama" element={<MainOrganigrama />}>
                 <Route path="agregar" element={<Organigrama />}></Route>
